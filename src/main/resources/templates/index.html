@@ -2,15 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+          crossorigin="anonymous">
     <title>NBA Side App</title>
 </head>
 <body>
-    <h1>
+<header>
+    <h1 id="header">
         <a href="index.html" th:href="@{/logo}">
-            <img src="/static/nba_logo.png" th:src="@{/nba_logo.png}" 
+            <img src="/static/nba_logo.png" th:src="@{/nba_logo.png}"
                  alt="nba_logo" width="4%"/>
         </a>
         NBA Side App
     </h1>
+</header>
+<main>
+    <div>
+        <a href="draft-page.html" th:href="@{/draft-page}">PLAYER_PAGE</a>
+    </div>
+</main>
 </body>
 </html>
