@@ -41,3 +41,5 @@ insert into PLAYER (
 	(35, 'Dave Cowens', 'C/PF', 94, 'A+', 'A', 'B-', 'A-', 'C+', 'C-', 'A+', 'B+', 'A+'),
 	(36, 'Willis Reed', 'C/PF', 94, 'A+', 'A', 'F', 'A-', 'C', 'D+', 'A+', 'A+', 'A-')
 ;
+
+update PLAYER set FULL_NAME = 'Charles Barkley' where PLAYER_ID = 26;
