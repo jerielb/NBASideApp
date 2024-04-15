@@ -36,15 +36,13 @@ public class IndexController {
     
     @GetMapping("/draft-page")
     public String getDraftTeamPage(Model model) {
-        LOGGER.info("Redirecting to draft page");
-		List<Player> draftPool = indexService.getAllPlayers();
-        
 		LOGGER.debug("Reset draft page variables");
+		List<Player> draftPool = indexService.getAllPlayers();
 		draftPageService.reset(5, draftPool);
+		model.addAttribute("players", draftPool);
 		
-        LOGGER.debug("Getting player draft pool from DB Player Table");
-        model.addAttribute("players", draftPool);
-        return "draft-page";
+		LOGGER.info("Redirecting to draft page");
+		return "draft-page";
     }
     
 }

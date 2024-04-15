@@ -1,14 +1,11 @@
 package com.jerielb.NBASideApp.controller;
 
-import com.jerielb.NBASideApp.model.Player;
 import com.jerielb.NBASideApp.service.DraftPageService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,15 +24,11 @@ public class DraftPageController {
 	// functions
 	@PostMapping("/draft-player")
 	public String draftPlayer(@RequestParam int playerId, Model model) {
-		LOGGER.info("Drafted playerId: " + playerId);
+		LOGGER.debug("Drafted playerId: " + playerId);
+		boolean fullTeam = draftPageService.draftPlayerToTeam(playerId);
+		LOGGER.info("Full Roster --> " + fullTeam);
 		
-//		boolean fullTeam = draftPageService.draftPlayerToTeam(player);
 		model.addAttribute("players", draftPageService.getDraftPool());
-		
-//		if (fullTeam) {
-//			return "draft-summary";
-//		} else {
-			return "draft-page";
-//		}
+		return "draft-page";
 	}
 }
