@@ -1,5 +1,7 @@
 package com.jerielb.NBASideApp.controller;
 
+import com.jerielb.NBASideApp.model.Player;
+import com.jerielb.NBASideApp.service.DraftPageService;
 import com.jerielb.NBASideApp.service.IndexService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,16 +10,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 public class IndexController {
     // TODO: variables
     private final Logger LOGGER = LogManager.getLogger(IndexController.class);
     private IndexService indexService;
+	private DraftPageService draftPageService;
     
     // TODO: constructor
     @Autowired
-    public IndexController(IndexService indexService) {
+    public IndexController(IndexService indexService, DraftPageService draftPageService) {
         this.indexService = indexService;
+		this.draftPageService = draftPageService;
     }
     
     // functions
@@ -31,9 +37,13 @@ public class IndexController {
     @GetMapping("/draft-page")
     public String getDraftTeamPage(Model model) {
         LOGGER.info("Redirecting to draft page");
+		List<Player> draftPool = indexService.getAllPlayers();
         
+		LOGGER.debug("Reset draft page variables");
+		draftPageService.reset(5, draftPool);
+		
         LOGGER.debug("Getting player draft pool from DB Player Table");
-        model.addAttribute("players", indexService.getAllPlayers());
+        model.addAttribute("players", draftPool);
         return "draft-page";
     }
     
