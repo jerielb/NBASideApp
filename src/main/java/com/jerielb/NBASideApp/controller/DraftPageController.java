@@ -6,33 +6,38 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class DraftPageController {
-	// variables
 	private final Logger LOGGER = LogManager.getLogger(DraftPageController.class);
 	private DraftPageService draftPageService;
 	
-	// constructor
 	@Autowired
 	public DraftPageController(DraftPageService draftPageService){
 		this.draftPageService = draftPageService;
 	}
 	
-	// functions
-	@PostMapping("/draft-page/draft-player")
+	@PostMapping("/draft_page/draft_player")
 	public String draftPlayer(@RequestParam int playerId, Model model) {
 		LOGGER.debug("Drafted playerId: " + playerId);
 		boolean fullTeam = draftPageService.draftPlayerToTeam(playerId);
 		
 		if (fullTeam) {
 			LOGGER.info("Full roster drafted");
-			return "redirect:/";
+			return "redirect:/draft_summary_page";
 		}
 		
 		model.addAttribute("players", draftPageService.getDraftPool());
-		return "draft-page";
+		return "draft_page";
+	}
+	
+	@GetMapping("/draft_summary_page")
+	public String draftSummary(Model model) {
+		model.addAttribute("roster", draftPageService.getRoster());
+		model.addAttribute("teamTotals", draftPageService.teamSummaryStats());
+		return "draft_summary_page";
 	}
 }

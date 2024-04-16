@@ -14,19 +14,16 @@ import java.util.List;
 
 @Controller
 public class IndexController {
-    // TODO: variables
     private final Logger LOGGER = LogManager.getLogger(IndexController.class);
     private IndexService indexService;
 	private DraftPageService draftPageService;
     
-    // TODO: constructor
     @Autowired
     public IndexController(IndexService indexService, DraftPageService draftPageService) {
         this.indexService = indexService;
 		this.draftPageService = draftPageService;
     }
     
-    // functions
     @GetMapping("/logo")
     public String getHomePage() {
         LOGGER.info("Redirecting to homepage");
@@ -34,7 +31,7 @@ public class IndexController {
         return "redirect:/";
     }
     
-    @GetMapping("/draft-page")
+    @GetMapping("/draft_page")
     public String getDraftTeamPage(Model model) {
 		LOGGER.debug("Reset draft page variables");
 		List<Player> draftPool = indexService.getAllPlayers();
@@ -42,7 +39,7 @@ public class IndexController {
 		model.addAttribute("players", draftPool);
 		
 		LOGGER.info("Redirecting to draft page");
-		return "draft-page";
+		return "draft_page";
     }
     
 }
