@@ -63,7 +63,7 @@
 					<td th:text="${player.iq}">IQ</td>
 					
 					<td>
-						<form method="post" action="#" th:action="@{/draft-player}">
+						<form method="post" action="#" th:action="@{/draft-page/draft-player}">
 							<input type="hidden" name="playerId" th:value="${player.playerId}">
 							<input type="submit" value="select">
 						</form>

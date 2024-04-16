@@ -22,11 +22,15 @@ public class DraftPageController {
 	}
 	
 	// functions
-	@PostMapping("/draft-player")
+	@PostMapping("/draft-page/draft-player")
 	public String draftPlayer(@RequestParam int playerId, Model model) {
 		LOGGER.debug("Drafted playerId: " + playerId);
 		boolean fullTeam = draftPageService.draftPlayerToTeam(playerId);
-		LOGGER.info("Full Roster --> " + fullTeam);
+		
+		if (fullTeam) {
+			LOGGER.info("Full roster drafted");
+			return "redirect:/";
+		}
 		
 		model.addAttribute("players", draftPageService.getDraftPool());
 		return "draft-page";
