@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.jerielb</groupId>
 	<artifactId>NBASideApp</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<name>NBASideApp</name>
 	<description>Side App for NBA games</description>
 	<properties>
