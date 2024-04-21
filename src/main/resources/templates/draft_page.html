@@ -21,16 +21,13 @@
 	
 	<main class="container border" style="height:85vh">
 		<h2>DRAFT PAGE</h2>
-		
 		<div class="row border" style="height:90%">
 			<div class="container border col-3">
 				<div id="team-roster" class="container row border" style="height:70%">
-					<div class="row border border-danger">
-						<div class="border border-success">
+					<div class="row border">
+						<div>
 							<div>
-								<div>
-									<b>CURRENT ROSTER</b>
-								</div>
+								<b>Current Roster</b>
 							</div>
 							<div th:each="player : ${roster}">
 								<div class="roster-row border">
@@ -42,25 +39,30 @@
 					</div>
 				</div>
 				<div id="team-stats" class="container row border" style="height:30%">
-					<div class="row row-cols-2 border border-dark">
-						<div class="col-12">
-							<h5>TEAM-STATS</h5>
+					<div class="container row border border-dark">
+						<div class="row">
+							<b>Team Totals</b>
 						</div>
-						
-						<div class="col"><b>INS:</b> <span th:text="${teamTotals.insideScoring}">##</span></div>
-						<div class="col"><b>MID:</b> <span th:text="${teamTotals.midRangeScoring}">##</span></div>
-
-						<div class="col"><b>3PT:</b> <span th:text="${teamTotals.threePointScoring}">##</span></div>
-						<div class="col"><b>PLM:</b> <span th:text="${teamTotals.playmaking}">##</span></div>
-
-						<div class="col"><b>INT_D:</b> <span th:text="${teamTotals.interiorDefense}">##</span></div>
-						<div class="col"><b>PER_D:</b> <span th:text="${teamTotals.perimeterDefense}">##</span></div>
-
-						<div class="col"><b>REB:</b> <span th:text="${teamTotals.rebounding}">##</span></div>
-						<div class="col"><b>PHY:</b> <span th:text="${teamTotals.physicals}">##</span></div>
-
-						<div class="col"><b>IQ:</b> <span th:text="${teamTotals.iq}">##</span></div>
-						<div class="col"><b>OVR:</b> <span th:text="${teamTotals.overall}">##</span></div>
+						<div class="row">
+							<span class="col-4"><b>Ins:</b> </span><span class="col-2" th:text="${teamTotals.insideScoring}">##</span>
+							<span class="col-4"><b>Mid:</b> </span><span class="col-2"  th:text="${teamTotals.midRangeScoring}">##</span>
+						</div>
+						<div class="row">
+							<span class="col-4"><b>3PT:</b> </span><span class="col-2" th:text="${teamTotals.threePointScoring}">##</span>
+							<span class="col-4"><b>PLM:</b> </span><span class="col-2" th:text="${teamTotals.playmaking}">##</span>
+						</div>
+						<div class="row">
+							<span class="col-4"><b>INT_D:</b> </span><span class="col-2" th:text="${teamTotals.interiorDefense}">##</span>
+							<span class="col-4"><b>PER_D:</b> </span><span class="col-2" th:text="${teamTotals.perimeterDefense}">##</span>
+						</div>
+						<div class="row">
+							<span class="col-4"><b>REB:</b> </span><span class="col-2" th:text="${teamTotals.rebounding}">##</span>
+							<span class="col-4"><b>PHY:</b> </span><span class="col-2" th:text="${teamTotals.physicals}">##</span>
+						</div>
+						<div class="row">
+							<span class="col-4"><b>IQ:</b> </span><span class="col-2" th:text="${teamTotals.iq}">##</span>
+							<span class="col-4"><b>OVR:</b> </span><span class="col-2" th:text="${teamTotals.overall}">##</span>
+						</div>
 					</div>
 				</div>
 				

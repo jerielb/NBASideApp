@@ -8,7 +8,7 @@
 	<title>Team Draft Summary</title>
 </head>
 <body>
-	<header class="container">
+	<header class="container border">
 		<h1 id="header">
 			<a href="index.html" th:href="@{/logo}">
 				<img  style="width:80px; height:80px;" src="/static/home_logo.png" th:src="@{/home_logo.png}"
@@ -17,62 +17,76 @@
 			NBA Side App
 		</h1>
 	</header>
-	<main class="container">
-		DRAFT SUMMARY
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">NAME</th>
-					<th scope="col">POS</th>
-					<th scope="col">OVR</th>
-					
-					<th scope="col">INS</th>
-					<th scope="col">MID</th>
-					<th scope="col">3PT</th>
-					
-					<th scope="col">PLM</th>
-					<th scope="col">INS_D</th>
-					<th scope="col">PER_D</th>
-					
-					<th scope="col">REB</th>
-					<th scope="col">PHY</th>
-					<th scope="col">IQ</th>
-				</tr>
-			</thead>
-			<tbody th:each="player : ${roster}">
-				<tr>
-					<td th:text="${player.fullName}">##</td>
-					<td th:text="${player.positions}">##</td>
-					<td th:text="${player.overall}">##</td>
-					
-					<td th:text="${player.insideScoring}">##</td>
-					<td th:text="${player.midRangeScoring}">##</td>
-					<td th:text="${player.threePointScoring}">##</td>
-					
-					<td th:text="${player.playmaking}">##</td>
-					<td th:text="${player.interiorDefense}">##</td>
-					<td th:text="${player.perimeterDefense}">##</td>
-					
-					<td th:text="${player.rebounding}">##</td>
-					<td th:text="${player.physicals}">##</td>
-					<td th:text="${player.iq}">##</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<div>
-			<h3>Totals</h3><br>
-			<b>Inside Scoring:</b> <span th:text="${teamTotals.insideScoring}">##</span><br>
-			<b>Mid-Range Scoring:</b> <span th:text="${teamTotals.midRangeScoring}">##</span><br>
-			<b>3pt Scoring:</b> <span th:text="${teamTotals.threePointScoring}">##</span><br>
-			<br>
-			<b>Playmaking:</b> <span th:text="${teamTotals.playmaking}">##</span><br>
-			<b>Interior Defense:</b> <span th:text="${teamTotals.interiorDefense}">##</span><br>
-			<b>Perimeter Defense:</b> <span th:text="${teamTotals.perimeterDefense}">##</span><br>
-			<br>
-			<b>Rebounding:</b> <span th:text="${teamTotals.rebounding}">##</span><br>
-			<b>Physicals:</b> <span th:text="${teamTotals.physicals}">##</span><br>
-			<b>IQ:</b> <span th:text="${teamTotals.iq}">##</span><br>
+	
+	<main class="container border" style="height:85vh">
+		<h2>DRAFT SUMMARY</h2>
+		<div class="row border" style="height:90%">
+			<div class="container border col-3">
+				<div id="team-roster" class="container row border" style="height:70%">
+					<div>
+						<h3>Totals</h3><br>
+						<b>Inside Scoring:</b> <span th:text="${teamTotals.insideScoring}">##</span><br>
+						<b>Mid-Range Scoring:</b> <span th:text="${teamTotals.midRangeScoring}">##</span><br>
+						<b>3pt Scoring:</b> <span th:text="${teamTotals.threePointScoring}">##</span><br>
+						<br>
+						<b>Playmaking:</b> <span th:text="${teamTotals.playmaking}">##</span><br>
+						<b>Interior Defense:</b> <span th:text="${teamTotals.interiorDefense}">##</span><br>
+						<b>Perimeter Defense:</b> <span th:text="${teamTotals.perimeterDefense}">##</span><br>
+						<br>
+						<b>Rebounding:</b> <span th:text="${teamTotals.rebounding}">##</span><br>
+						<b>Physicals:</b> <span th:text="${teamTotals.physicals}">##</span><br>
+						<b>IQ:</b> <span th:text="${teamTotals.iq}">##</span><br>
+						<br>
+						<b>Overall:</b> <span th:text="${teamTotals.overall}">##</span><br>
+					</div>
+				</div>
+				<div id="team-stats" class="container row border" style="height:30%">
+					NAME & SAVE TEAM
+				</div>
+			</div>
+			
+			<div id="draft-pool" class="container border col-9 table-responsive" style="height:100%">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">NAME</th>
+							<th scope="col">POS</th>
+							<th scope="col">OVR</th>
+							
+							<th scope="col">INS</th>
+							<th scope="col">MID</th>
+							<th scope="col">3PT</th>
+							
+							<th scope="col">PLM</th>
+							<th scope="col">INS_D</th>
+							<th scope="col">PER_D</th>
+							
+							<th scope="col">REB</th>
+							<th scope="col">PHY</th>
+							<th scope="col">IQ</th>
+						</tr>
+					</thead>
+					<tbody th:each="player : ${roster}">
+						<tr>
+							<td th:text="${player.fullName}">##</td>
+							<td th:text="${player.positions}">##</td>
+							<td th:text="${player.overall}">##</td>
+							
+							<td th:text="${player.insideScoring}">##</td>
+							<td th:text="${player.midRangeScoring}">##</td>
+							<td th:text="${player.threePointScoring}">##</td>
+							
+							<td th:text="${player.playmaking}">##</td>
+							<td th:text="${player.interiorDefense}">##</td>
+							<td th:text="${player.perimeterDefense}">##</td>
+							
+							<td th:text="${player.rebounding}">##</td>
+							<td th:text="${player.physicals}">##</td>
+							<td th:text="${player.iq}">##</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</main>
 </body>
