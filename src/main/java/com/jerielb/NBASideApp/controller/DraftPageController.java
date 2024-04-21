@@ -31,6 +31,8 @@ public class DraftPageController {
 		}
 		
 		model.addAttribute("players", draftPageService.getDraftPool());
+		model.addAttribute("roster", draftPageService.getRoster());
+		model.addAttribute("teamTotals", draftPageService.teamSummaryStats());
 		return "draft_page";
 	}
 	

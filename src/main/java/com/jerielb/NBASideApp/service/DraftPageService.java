@@ -75,17 +75,17 @@ public class DraftPageService {
 			teamIq.add(player.getIq());
 		}
 		
-		teamTotals.setInsideScoring(GradesUtil.gradeAverage(teamInsideScoring, rosterSize));
-		teamTotals.setMidRangeScoring(GradesUtil.gradeAverage(teamMidRangeScoring, rosterSize));
-		teamTotals.setThreePointScoring(GradesUtil.gradeAverage(teamThreePointScoring, rosterSize));
+		teamTotals.setInsideScoring(GradesUtil.gradeAverage(teamInsideScoring, roster.size()));
+		teamTotals.setMidRangeScoring(GradesUtil.gradeAverage(teamMidRangeScoring, roster.size()));
+		teamTotals.setThreePointScoring(GradesUtil.gradeAverage(teamThreePointScoring, roster.size()));
 		
-		teamTotals.setInteriorDefense(GradesUtil.gradeAverage(teamInteriorDefense, rosterSize));
-		teamTotals.setPerimeterDefense(GradesUtil.gradeAverage(teamPerimeterDefense, rosterSize));
-		teamTotals.setPlaymaking(GradesUtil.gradeAverage(teamPlaymaking, rosterSize));
+		teamTotals.setInteriorDefense(GradesUtil.gradeAverage(teamInteriorDefense, roster.size()));
+		teamTotals.setPerimeterDefense(GradesUtil.gradeAverage(teamPerimeterDefense, roster.size()));
+		teamTotals.setPlaymaking(GradesUtil.gradeAverage(teamPlaymaking, roster.size()));
 		
-		teamTotals.setRebounding(GradesUtil.gradeAverage(teamRebounding, rosterSize));
-		teamTotals.setPhysicals(GradesUtil.gradeAverage(teamPhysicals, rosterSize));
-		teamTotals.setIq(GradesUtil.gradeAverage(teamIq, rosterSize));
+		teamTotals.setRebounding(GradesUtil.gradeAverage(teamRebounding, roster.size()));
+		teamTotals.setPhysicals(GradesUtil.gradeAverage(teamPhysicals, roster.size()));
+		teamTotals.setIq(GradesUtil.gradeAverage(teamIq, roster.size()));
 		
 		return teamTotals;
 	}

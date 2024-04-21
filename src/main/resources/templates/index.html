@@ -8,16 +8,16 @@
     <title>NBA Side App</title>
 </head>
 <body>
-	<header>
+	<header class="container border">
 		<h1 id="header">
 			<a href="index.html" th:href="@{/logo}">
-				<img src="/static/nba_logo.png" th:src="@{/nba_logo.png}"
-					 alt="nba_logo" width="4%"/>
+				<img  style="width:80px; height:80px;" src="/static/home_logo.png" th:src="@{/home_logo.png}"
+					 alt="home_logo" width="4%"/>
 			</a>
 			NBA Side App
 		</h1>
 	</header>
-	<main>
+	<main class="container border" style="height:85vh">
 		<div>
 			<a href="draft_page.html" th:href="@{/draft_page}">PLAYER_PAGE</a>
 		</div>
