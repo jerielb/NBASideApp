@@ -38,7 +38,7 @@ public class IndexController {
 		draftPageService.reset(5, draftPool);
 		model.addAttribute("players", draftPool);
 		model.addAttribute("roster", draftPageService.getRoster());
-		model.addAttribute("teamTotals", draftPageService.teamSummaryStats());
+		model.addAttribute("team", draftPageService.teamSummaryStats());
 		
 		LOGGER.info("Redirecting to draft page");
 		return "draft_page";

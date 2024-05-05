@@ -25,19 +25,19 @@
 				<div id="team-roster" class="container row border" style="height:70%">
 					<div>
 						<h3>Totals</h3><br>
-						<b>Inside Scoring:</b> <span th:text="${teamTotals.insideScoring}">##</span><br>
-						<b>Mid-Range Scoring:</b> <span th:text="${teamTotals.midRangeScoring}">##</span><br>
-						<b>3pt Scoring:</b> <span th:text="${teamTotals.threePointScoring}">##</span><br>
+						<b>Inside Scoring:</b> <span th:text="${team.insideScoring}">##</span><br>
+						<b>Mid-Range Scoring:</b> <span th:text="${team.midRangeScoring}">##</span><br>
+						<b>3pt Scoring:</b> <span th:text="${team.threePointScoring}">##</span><br>
 						<br>
-						<b>Playmaking:</b> <span th:text="${teamTotals.playmaking}">##</span><br>
-						<b>Interior Defense:</b> <span th:text="${teamTotals.interiorDefense}">##</span><br>
-						<b>Perimeter Defense:</b> <span th:text="${teamTotals.perimeterDefense}">##</span><br>
+						<b>Playmaking:</b> <span th:text="${team.playmaking}">##</span><br>
+						<b>Interior Defense:</b> <span th:text="${team.interiorDefense}">##</span><br>
+						<b>Perimeter Defense:</b> <span th:text="${team.perimeterDefense}">##</span><br>
 						<br>
-						<b>Rebounding:</b> <span th:text="${teamTotals.rebounding}">##</span><br>
-						<b>Physicals:</b> <span th:text="${teamTotals.physicals}">##</span><br>
-						<b>IQ:</b> <span th:text="${teamTotals.iq}">##</span><br>
+						<b>Rebounding:</b> <span th:text="${team.rebounding}">##</span><br>
+						<b>Physicals:</b> <span th:text="${team.physicals}">##</span><br>
+						<b>IQ:</b> <span th:text="${team.iq}">##</span><br>
 						<br>
-						<b>Overall:</b> <span th:text="${teamTotals.overall}">##</span><br>
+						<b>Overall:</b> <span th:text="${team.overall}">##</span><br>
 					</div>
 				</div>
 				<div id="team-stats" class="container row border" style="height:30%">
@@ -66,7 +66,7 @@
 							<th scope="col">IQ</th>
 						</tr>
 					</thead>
-					<tbody th:each="player : ${roster}">
+					<tbody th:each="player : ${team.roster}">
 						<tr>
 							<td th:text="${player.fullName}">##</td>
 							<td th:text="${player.positions}">##</td>

@@ -3,6 +3,7 @@ package com.jerielb.NBASideApp.service;
 import com.jerielb.NBASideApp.controller.DraftPageController;
 import com.jerielb.NBASideApp.model.GradesUtil;
 import com.jerielb.NBASideApp.model.Player;
+import com.jerielb.NBASideApp.model.Team;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class DraftPageService {
     private static int rosterSize = 5;
     private static List<Player> roster = new ArrayList<>();
 	private static List<Player> draftPool = new ArrayList<>();
-	private static Player teamTotals = new Player();
+	private static Team team;
     
     // constructor
     public DraftPageService() {}
@@ -27,6 +28,7 @@ public class DraftPageService {
 	public void reset(int rosterSize, List<Player> draftPool) {
 		this.rosterSize = rosterSize;
 		this.draftPool = draftPool;
+		this.team = new Team();
 		roster.clear();
 	}
 	
@@ -42,11 +44,12 @@ public class DraftPageService {
             return false;
         } else {
             // complete roster
+			team.setRoster(roster);
             return true;
         }
     }
 	
-	public Player teamSummaryStats() {
+	public Team teamSummaryStats() {
 		// instead of creating new Java object make use of the existing Player object
 		List<String> teamInsideScoring = new ArrayList<>();
 		List<String> teamMidRangeScoring = new ArrayList<>();
@@ -93,22 +96,22 @@ public class DraftPageService {
 			phy = GradesUtil.gradeAverage(teamPhysicals, roster.size());
 			iq = GradesUtil.gradeAverage(teamIq, roster.size());
 			
-			teamTotals.setOverall(Math.round(teamOvr/roster.size()));
+			team.setOverall(Math.round(teamOvr/roster.size()));
 		}
 		
-		teamTotals.setInsideScoring(ins);
-		teamTotals.setMidRangeScoring(mid);
-		teamTotals.setThreePointScoring(three);
+		team.setInsideScoring(ins);
+		team.setMidRangeScoring(mid);
+		team.setThreePointScoring(three);
 		
-		teamTotals.setInteriorDefense(intD);
-		teamTotals.setPerimeterDefense(perD);
-		teamTotals.setPlaymaking(plm);
+		team.setInteriorDefense(intD);
+		team.setPerimeterDefense(perD);
+		team.setPlaymaking(plm);
 		
-		teamTotals.setRebounding(reb);
-		teamTotals.setPhysicals(phy);
-		teamTotals.setIq(iq);
+		team.setRebounding(reb);
+		team.setPhysicals(phy);
+		team.setIq(iq);
 		
-		return teamTotals;
+		return team;
 	}
 	
 	public List<Player> getRoster() {
