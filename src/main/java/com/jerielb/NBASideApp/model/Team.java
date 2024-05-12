@@ -29,6 +29,14 @@ public class Team {
 	// constructor
 	public Team() {}
 	
+	// functions
+	public void addPlayer(Player player) {
+		if (roster.isEmpty()) {
+			setTeamName("Team " + player.getFullName());
+		}
+		roster.add(player);
+	}
+	
 	// getters & setters
 	public long getTeamId() {
 		return teamId;
