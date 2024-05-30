@@ -29,7 +29,7 @@
 							<div>
 								<b>Current Roster</b>
 							</div>
-							<div th:each="player : ${roster}">
+							<div th:each="player : ${team.roster}">
 								<div class="roster-row border">
 									<span th:text="${player.fullName}">name</span>
 									<span th:text="${player.overall}">##</span>

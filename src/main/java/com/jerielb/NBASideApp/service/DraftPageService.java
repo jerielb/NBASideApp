@@ -18,7 +18,8 @@ import java.util.Optional;
 public class DraftPageService {
     // variables
     private final Logger LOGGER = LogManager.getLogger(DraftPageController.class);
-    private static int rosterSize;
+	private static int leagueSize;
+	private static int rosterSize;
 	private static List<Team> league = new ArrayList<>();
 	private static List<Player> draftPool = new ArrayList<>();
 	// used to track the current team selecting for within the league List 
@@ -35,7 +36,9 @@ public class DraftPageService {
 	
     // functions
 	public void reset(int leagueSize, int rosterSize) {
+		LOGGER.debug("Resetting draft page");
 		teamIndex = 0;
+		this.leagueSize = leagueSize;
 		this.rosterSize = rosterSize;
 		this.draftPool = getAllPlayers();
 		
@@ -46,7 +49,7 @@ public class DraftPageService {
 	}
 	
 	public List<Player> getAllPlayers() {
-		LOGGER.info("Getting all players from PLAYER table");
+		LOGGER.debug("Getting all players from PLAYER table");
 		return playerRepository.findAll();
 	}
 	
@@ -62,8 +65,7 @@ public class DraftPageService {
 		setTeamSummaryStats(team);
 		
 		// checks if the last team has a full roster
-        if (team.getRoster().size() == rosterSize 
-				&& teamIndex == league.size()-1) {
+        if (team.getRoster().size() == rosterSize && teamIndex == league.size()-1) {
 			// complete league roster
 			return true;
 		} else {
@@ -139,20 +141,27 @@ public class DraftPageService {
 		return team;
 	}
 	
+	public int getTeamIndex(){
+		return teamIndex;
+	}
+	
+	public int getLeagueSize() {
+		return leagueSize;
+	}
+	
 	public List<Player> getDraftPool() {
 		return draftPool;
 	}
 	
-	public List<Player> getRoster() {
-		return league.get(teamIndex).getRoster();
+	public Team getTeamAtIndex(int teamIndex) {
+		return league.get(teamIndex);
 	}
 	
-	public Team getTeamSummaryStats() {
+	public Team getTeam() {
 		return league.get(teamIndex);
 	}
 	
 	public void nextTeam() {
-		LOGGER.info("\n\t\tteamIndex" + teamIndex + "\n");
 		if (teamIndex == league.size()-1) {
 			teamIndex = 0;
 		} else {

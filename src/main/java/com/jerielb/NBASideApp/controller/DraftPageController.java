@@ -27,8 +27,7 @@ public class DraftPageController {
 		LOGGER.info("Reset draft page with League Size: " + league_size + " & Roster Size: " + roster_size);
 		draftPageService.reset(league_size, roster_size);
 		model.addAttribute("players", draftPageService.getDraftPool());
-		model.addAttribute("roster", draftPageService.getRoster());
-		model.addAttribute("team", draftPageService.getTeamSummaryStats());
+		model.addAttribute("team", draftPageService.getTeam());
 		
 		LOGGER.info("Redirecting to Draft page");
 		return "draft_page";
@@ -36,23 +35,35 @@ public class DraftPageController {
 	
 	@PostMapping("/draft_page/draft_player")
 	public String draftPlayer(@RequestParam int playerId, Model model) {
-		LOGGER.debug("Drafted playerId: " + playerId);
+		LOGGER.debug("Drafted playerId: " + playerId + " for team in league index: " + draftPageService.getTeamIndex());
 		boolean fullTeam = draftPageService.draftPlayerToTeam(playerId);
 		
 		if (fullTeam) {
 			LOGGER.info("Full roster drafted");
+			LOGGER.info("Redirecting to Draft Summary page");
 			return "redirect:/draft_summary_page";
 		}
 		
 		model.addAttribute("players", draftPageService.getDraftPool());
-		model.addAttribute("roster", draftPageService.getRoster());
-		model.addAttribute("team", draftPageService.getTeamSummaryStats());
+		model.addAttribute("team", draftPageService.getTeam());
 		return "draft_page";
 	}
 	
 	@GetMapping("/draft_summary_page")
 	public String draftSummary(Model model) {
-		model.addAttribute("team", draftPageService.getTeamSummaryStats());
+		model.addAttribute("leagueSize", draftPageService.getLeagueSize());
+		model.addAttribute("team", draftPageService.getTeamAtIndex(0));
+		
+		return "draft_summary_page";
+	}
+	
+	@PostMapping("/draft_summary_page/team")
+	public String draftSummaryTeam(@RequestParam int teamIndex, Model model) {
+		LOGGER.debug("Get team in league index: " + teamIndex);
+		
+		model.addAttribute("leagueSize", draftPageService.getLeagueSize());
+		model.addAttribute("team", draftPageService.getTeamAtIndex(teamIndex-1));
+		
 		return "draft_summary_page";
 	}
 }
