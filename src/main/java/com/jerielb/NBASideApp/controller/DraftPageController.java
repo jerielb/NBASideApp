@@ -22,12 +22,13 @@ public class DraftPageController {
 	
 	@PostMapping("/draft_page")
 	public String getNewDraftPage(@RequestParam int league_size, @RequestParam int roster_size, Model model) {
-		// using @RequestParam to extract value from the [name=""] tag of the <select> tag inside the form from the html page
+		/* using @RequestParam to extract value from the [name=""] tag of the <select> tag inside the form from the html page */
 		
 		LOGGER.info("Reset draft page with League Size: " + league_size + " & Roster Size: " + roster_size);
 		draftPageService.reset(league_size, roster_size);
 		model.addAttribute("players", draftPageService.getDraftPool());
 		model.addAttribute("team", draftPageService.getTeam());
+		model.addAttribute("teamIndex", draftPageService.getTeamIndex()+1);
 		
 		LOGGER.info("Redirecting to Draft page");
 		return "draft_page";
@@ -35,7 +36,7 @@ public class DraftPageController {
 	
 	@PostMapping("/draft_page/draft_player")
 	public String draftPlayer(@RequestParam int playerId, Model model) {
-		LOGGER.debug("Drafted playerId: " + playerId + " for team in league index: " + draftPageService.getTeamIndex());
+		LOGGER.debug("Drafted playerId: " + playerId + " for team: #" + draftPageService.getTeamIndex()+1);
 		boolean fullTeam = draftPageService.draftPlayerToTeam(playerId);
 		
 		if (fullTeam) {
@@ -46,6 +47,7 @@ public class DraftPageController {
 		
 		model.addAttribute("players", draftPageService.getDraftPool());
 		model.addAttribute("team", draftPageService.getTeam());
+		model.addAttribute("teamIndex", draftPageService.getTeamIndex()+1);
 		return "draft_page";
 	}
 	

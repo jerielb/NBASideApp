@@ -5,14 +5,14 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		  integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 		  crossorigin="anonymous">
+	<link rel="stylesheet" href="../../static/css/index.css" th:href="@{/css/index.css}"/>
 	<title>Team Draft Summary</title>
 </head>
 <body>
 	<header class="container border">
 		<h1 id="header">
-			<a href="index.html" th:href="@{/logo}">
-				<img  style="width:80px; height:80px;" src="/static/home_logo.png" th:src="@{/home_logo.png}"
-					  alt="home_logo" width="4%"/>
+			<a href="index.html" th:href="@{/logo}" class="home-icon">
+				<img  style="width:80px; height:80px;" src="/static/home_logo.png" th:src="@{/home_logo.png}" alt="home_logo" width="4%"/>
 			</a>
 			NBA Side App
 		</h1>

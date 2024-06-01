@@ -7,12 +7,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class IndexService {
-    // variables
     private final Logger LOGGER = LogManager.getLogger(IndexService.class);
     
-    // constructor
     @Autowired
     public IndexService() {}
-    
-    // functions
 }
