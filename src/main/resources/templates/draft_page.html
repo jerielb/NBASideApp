@@ -29,7 +29,7 @@
 							<div>
 								<b>Current Roster</b>
 							</div>
-							<div th:each="player : ${roster}">
+							<div th:each="player : ${team.roster}">
 								<div class="roster-row border">
 									<span th:text="${player.fullName}">name</span>
 									<span th:text="${player.overall}">##</span>
@@ -44,24 +44,24 @@
 							<b>Team Totals</b>
 						</div>
 						<div class="row">
-							<span class="col-4"><b>Ins:</b> </span><span class="col-2" th:text="${teamTotals.insideScoring}">##</span>
-							<span class="col-4"><b>Mid:</b> </span><span class="col-2"  th:text="${teamTotals.midRangeScoring}">##</span>
+							<span class="col-4"><b>Ins:</b> </span><span class="col-2" th:text="${team.insideScoring}">##</span>
+							<span class="col-4"><b>Mid:</b> </span><span class="col-2"  th:text="${team.midRangeScoring}">##</span>
 						</div>
 						<div class="row">
-							<span class="col-4"><b>3PT:</b> </span><span class="col-2" th:text="${teamTotals.threePointScoring}">##</span>
-							<span class="col-4"><b>PLM:</b> </span><span class="col-2" th:text="${teamTotals.playmaking}">##</span>
+							<span class="col-4"><b>3PT:</b> </span><span class="col-2" th:text="${team.threePointScoring}">##</span>
+							<span class="col-4"><b>PLM:</b> </span><span class="col-2" th:text="${team.playmaking}">##</span>
 						</div>
 						<div class="row">
-							<span class="col-4"><b>INT_D:</b> </span><span class="col-2" th:text="${teamTotals.interiorDefense}">##</span>
-							<span class="col-4"><b>PER_D:</b> </span><span class="col-2" th:text="${teamTotals.perimeterDefense}">##</span>
+							<span class="col-4"><b>INT_D:</b> </span><span class="col-2" th:text="${team.interiorDefense}">##</span>
+							<span class="col-4"><b>PER_D:</b> </span><span class="col-2" th:text="${team.perimeterDefense}">##</span>
 						</div>
 						<div class="row">
-							<span class="col-4"><b>REB:</b> </span><span class="col-2" th:text="${teamTotals.rebounding}">##</span>
-							<span class="col-4"><b>PHY:</b> </span><span class="col-2" th:text="${teamTotals.physicals}">##</span>
+							<span class="col-4"><b>REB:</b> </span><span class="col-2" th:text="${team.rebounding}">##</span>
+							<span class="col-4"><b>PHY:</b> </span><span class="col-2" th:text="${team.physicals}">##</span>
 						</div>
 						<div class="row">
-							<span class="col-4"><b>IQ:</b> </span><span class="col-2" th:text="${teamTotals.iq}">##</span>
-							<span class="col-4"><b>OVR:</b> </span><span class="col-2" th:text="${teamTotals.overall}">##</span>
+							<span class="col-4"><b>IQ:</b> </span><span class="col-2" th:text="${team.iq}">##</span>
+							<span class="col-4"><b>OVR:</b> </span><span class="col-2" th:text="${team.overall}">##</span>
 						</div>
 					</div>
 				</div>

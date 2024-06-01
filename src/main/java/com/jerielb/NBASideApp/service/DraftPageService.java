@@ -3,8 +3,11 @@ package com.jerielb.NBASideApp.service;
 import com.jerielb.NBASideApp.controller.DraftPageController;
 import com.jerielb.NBASideApp.model.GradesUtil;
 import com.jerielb.NBASideApp.model.Player;
+import com.jerielb.NBASideApp.model.Team;
+import com.jerielb.NBASideApp.repository.PlayerRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,19 +18,39 @@ import java.util.Optional;
 public class DraftPageService {
     // variables
     private final Logger LOGGER = LogManager.getLogger(DraftPageController.class);
-    private static int rosterSize = 5;
-    private static List<Player> roster = new ArrayList<>();
+	private static int leagueSize;
+	private static int rosterSize;
+	private static List<Team> league = new ArrayList<>();
 	private static List<Player> draftPool = new ArrayList<>();
-	private static Player teamTotals = new Player();
+	// used to track the current team selecting for within the league List 
+	private static int teamIndex;
+	
+	// repos
+	private final PlayerRepository playerRepository;
     
     // constructor
-    public DraftPageService() {}
+	@Autowired
+    public DraftPageService(PlayerRepository playerRepository) {
+		this.playerRepository = playerRepository;
+	}
 	
     // functions
-	public void reset(int rosterSize, List<Player> draftPool) {
+	public void reset(int leagueSize, int rosterSize) {
+		LOGGER.debug("Resetting draft page");
+		teamIndex = 0;
+		this.leagueSize = leagueSize;
 		this.rosterSize = rosterSize;
-		this.draftPool = draftPool;
-		roster.clear();
+		this.draftPool = getAllPlayers();
+		
+		league.clear();
+		for (int i=0; i<leagueSize; i++) {
+			league.add(new Team());
+		}
+	}
+	
+	public List<Player> getAllPlayers() {
+		LOGGER.debug("Getting all players from PLAYER table");
+		return playerRepository.findAll();
 	}
 	
 	public boolean draftPlayerToTeam(int playerId) {
@@ -35,19 +58,25 @@ public class DraftPageService {
 		Player player = playerOptional.get();
 		LOGGER.info("Drafted player: " + player.getFullName());
 		
-        roster.add(player);
+		Team team = league.get(teamIndex);
+		team.addPlayer(player);
 		draftPool.remove(player);
 		
-        if (roster.size() < rosterSize) {
-            return false;
-        } else {
-            // complete roster
-            return true;
+		setTeamSummaryStats(team);
+		
+		// checks if the last team has a full roster
+        if (team.getRoster().size() == rosterSize && teamIndex == league.size()-1) {
+			// complete league roster
+			return true;
+		} else {
+			nextTeam();
+			return false;
         }
     }
 	
-	public Player teamSummaryStats() {
-		// instead of creating new Java object make use of the existing Player object
+	public Team setTeamSummaryStats(Team team) {
+		List<Player> roster = team.getRoster();
+		
 		List<String> teamInsideScoring = new ArrayList<>();
 		List<String> teamMidRangeScoring = new ArrayList<>();
 		List<String> teamThreePointScoring = new ArrayList<>();
@@ -93,29 +122,50 @@ public class DraftPageService {
 			phy = GradesUtil.gradeAverage(teamPhysicals, roster.size());
 			iq = GradesUtil.gradeAverage(teamIq, roster.size());
 			
-			teamTotals.setOverall(Math.round(teamOvr/roster.size()));
+			team.setOverall(Math.round(teamOvr/roster.size()));
 		}
 		
-		teamTotals.setInsideScoring(ins);
-		teamTotals.setMidRangeScoring(mid);
-		teamTotals.setThreePointScoring(three);
+		team.setInsideScoring(ins);
+		team.setMidRangeScoring(mid);
+		team.setThreePointScoring(three);
 		
-		teamTotals.setInteriorDefense(intD);
-		teamTotals.setPerimeterDefense(perD);
-		teamTotals.setPlaymaking(plm);
+		team.setInteriorDefense(intD);
+		team.setPerimeterDefense(perD);
+		team.setPlaymaking(plm);
 		
-		teamTotals.setRebounding(reb);
-		teamTotals.setPhysicals(phy);
-		teamTotals.setIq(iq);
+		team.setRebounding(reb);
+		team.setPhysicals(phy);
+		team.setIq(iq);
 		
-		return teamTotals;
+		LOGGER.info("Updated current team stat averages");
+		return team;
 	}
 	
-	public List<Player> getRoster() {
-		return roster;
+	public int getTeamIndex(){
+		return teamIndex;
+	}
+	
+	public int getLeagueSize() {
+		return leagueSize;
 	}
 	
 	public List<Player> getDraftPool() {
 		return draftPool;
+	}
+	
+	public Team getTeamAtIndex(int teamIndex) {
+		return league.get(teamIndex);
+	}
+	
+	public Team getTeam() {
+		return league.get(teamIndex);
+	}
+	
+	public void nextTeam() {
+		if (teamIndex == league.size()-1) {
+			teamIndex = 0;
+		} else {
+			teamIndex++;
+		}
 	}
 }

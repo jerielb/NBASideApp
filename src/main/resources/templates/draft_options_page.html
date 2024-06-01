@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		  integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+		  crossorigin="anonymous">
+	<title>NBA Side App</title>
+</head>
+<body>
+	<header class="container border">
+		<h1 id="header">
+			<a href="index.html" th:href="@{/logo}">
+				<img  style="width:80px; height:80px;" src="/static/home_logo.png" th:src="@{/home_logo.png}"
+					  alt="home_logo" width="4%"/>
+			</a>
+			NBA Side App
+		</h1>
+	</header>
+	
+	<main class="container border" style="height:85vh">
+		<div>
+<!--			<a href="draft_page.html" th:href="@{/draft_page}">NEW_DRAFT</a>-->
+			<h3>NEW DRAFT</h3>
+			<form method="post" action="draft_page.html" th:action="@{/draft_page}">
+				<fieldset>
+					<!-- thymeleaf would recognise this from the name="" attribute from the select tag -->
+					<label for="league_size">League Size:</label>
+					<select id="league_size" name="league_size">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="4">4</option>
+						<option value="8">8</option>
+						<option value="16" selected>16</option>
+						<option value="30">30</option>
+					</select>
+				</fieldset><br>
+				<fieldset>
+					<label for="roster_size">Roster Size:</label>
+					<select id="roster_size" name="roster_size">
+						<option value="5">5</option>
+						<option value="8">8</option>
+						<option value="10" selected>10</option>
+						<option value="13">13</option>
+						<option value="15">15</option>
+					</select>
+				</fieldset>
+				<input type="submit" value="select">
+			</form>
+		</div>
+		<hr>
+		<div>
+			<a href="placeholder.html" th:href="@{/placeholder}">LOAD_DRAFT</a>
+		</div>
+	</main>
+</body>
+</html>
