@@ -1,3 +1,6 @@
+-- "With this statement, you risk letting in rows into your tables that do not adhere ot the FOREIGN KEY constraint"
+-- The setting is only valid during the connection. As soon as you disconnect, the next connection will have it set back to 1.
+--SET FOREIGN_KEY_CHECKS = 0;
 truncate table PLAYER;
 
 insert into PLAYER (
@@ -6,10 +9,10 @@ insert into PLAYER (
     INTERIOR_DEFENSE, PERIMETER_DEFENSE, PLAYMAKING, 
     REBOUNDING, PHYSICALS, IQ
 ) VALUES 
-	(1, 'Kareem Abdul-Jabbar', 'C', '99', 'A+', 'B+', 'D-', 'A+', 'C', 'C', 'A+', 'A+', 'A+'),
-	(2, 'Michael Jordan', 'SG/SF', '99', 'A+', 'A+', 'A+', 'B+', 'A+', 'A', 'B-', 'A+', 'A+'),
-	(3, 'Magic Johnson', 'PG/PF', '99', 'A+', 'A', 'A-', 'A', 'A', 'A+', 'A', 'A+', 'A+'),
-	(4, 'Lebron James', 'SF/PF', '99', 'A+', 'A', 'A', 'A-', 'A+', 'A+', 'B', 'A+', 'A+'),
+	(1, 'Michael Jordan', 'SG/SF', '99', 'A+', 'A+', 'A+', 'B+', 'A+', 'A', 'B-', 'A+', 'A+'),
+	(2, 'Lebron James', 'SF/PF', '99', 'A+', 'A', 'A', 'A-', 'A+', 'A+', 'B', 'A+', 'A+'),
+	(3, 'Kareem Abdul-Jabbar', 'C', '99', 'A+', 'B+', 'D-', 'A+', 'C', 'C', 'A+', 'A+', 'A+'),
+	(4, 'Magic Johnson', 'PG/PF', '98', 'A+', 'A', 'A-', 'A', 'A', 'A+', 'A', 'A+', 'A+'),
 	(5, 'Bill Russell', 'C/PF', '98', 'A+', 'F', 'F', 'A+', 'B', 'C+', 'A+', 'A+', 'A+'),
 	(6, 'Larry Bird', 'SF/PF', '98', 'A+', 'A+', 'A+', 'A', 'A', 'A', 'B+', 'D', 'A+'),
 	(7, 'Oscar Robertson', 'PG', '98', 'A+', 'A', 'A+', 'C', 'A', 'A+', 'A', 'A+', 'A+'),
