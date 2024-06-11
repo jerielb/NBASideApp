@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		  integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+		  crossorigin="anonymous">
+	<link rel="stylesheet" href="../../static/css/index.css" th:href="@{/css/index.css}"/>
+	<title>NBA Side App</title>
+</head>
+<body>
+	<header class="container border">
+		<h1 id="header">
+			<a href="index.html" th:href="@{/logo}" class="home-icon">
+				<img  style="width:80px; height:80px;" src="/static/home_logo.png" th:src="@{/home_logo.png}" alt="home_logo" width="4%"/>
+			</a>
+			NBA Side App
+		</h1>
+	</header>
+	
+	<main class="container border" style="height:85vh">
+		<div>
+			<h3>LOAD_DRAFT</h3>
+			<table class="table">
+				<thead class="table-dark sticky-top">
+				<tr>
+					<th scope="col">NAME</th>
+					<th scope="col">TEAMS</th>
+					<th scope="col">ROSTER</th>
+					<th scope="col"></th>
+				</tr>
+				</thead>
+				<tbody th:each="league : ${leagues}">
+				<tr>
+					<td th:text="${league.leagueName}">name</td>
+					<td>teams</td>
+					<td>roster</td>
+					<td>
+						<form method="post" action="#" th:action="@{/#}">
+							<input type="submit" value="select">
+						</form>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			
+			
+<!--			<a href="draft_summary_page.html" th:href="@{/draft_load_page}">-->
+<!--				<input type="submit" value="select">-->
+<!--			</a>-->
+		</div>
+	</main>
+</body>
+</html>

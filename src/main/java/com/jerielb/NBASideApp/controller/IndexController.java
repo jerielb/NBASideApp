@@ -30,4 +30,11 @@ public class IndexController {
 		LOGGER.info("Redirecting to Draft Options page");
 		return "draft_options_page";
     }
+	
+	@GetMapping("/draft_load_page")
+	public String loadDraft(Model model) {
+		LOGGER.info("Redirecting to Draft Load page");
+		model.addAttribute("leagues", indexService.getLeagues());
+		return "draft_load_page";
+	}
 }

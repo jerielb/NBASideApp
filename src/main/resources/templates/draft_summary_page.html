@@ -93,7 +93,7 @@
 				
 				<div class="border border-danger pt-2" style="height:12%">
 					<nav>
-						<ul class="pagination d-flex justify-content-evenly overflow-auto">
+						<ul class="pagination justify-content-evenly overflow-auto">
 							<li  th:each="i : ${#numbers.sequence(1, leagueSize)}">
 								
 								<form method="post" action="#" th:action="@{/draft_summary_page/team}">

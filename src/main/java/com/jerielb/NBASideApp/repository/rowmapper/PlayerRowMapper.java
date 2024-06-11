@@ -12,7 +12,7 @@ public class PlayerRowMapper implements RowMapper<Player> {
     @Override
     public Player mapRow(ResultSet rs, int rowNum) throws SQLException {
         Player player = new Player();
-
+		
         player.setPlayerId(rs.getLong("PLAYER_ID"));
         player.setFullName(rs.getString("FULL_NAME"));
         player.setPositions(rs.getString("POSITIONS"));
@@ -25,11 +25,11 @@ public class PlayerRowMapper implements RowMapper<Player> {
         player.setInteriorDefense(rs.getString("INTERIOR_DEFENSE"));
         player.setPerimeterDefense(rs.getString("PERIMETER_DEFENSE"));
         player.setPlaymaking(rs.getString("PLAYMAKING"));
-
+		
         player.setRebounding(rs.getString("REBOUNDING"));
         player.setPhysicals(rs.getString("PHYSICALS"));
         player.setIq(rs.getString("IQ"));
-
+		
         return player;
     }
 }

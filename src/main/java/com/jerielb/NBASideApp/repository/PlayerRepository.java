@@ -5,7 +5,7 @@ import com.jerielb.NBASideApp.model.Player;
 import java.util.List;
 
 /**
- * @Repository for the Player DB table 
+ * @Repository for the PLAYER DB table 
  * - contains all communicating queries with the table
 **/
 public interface PlayerRepository {

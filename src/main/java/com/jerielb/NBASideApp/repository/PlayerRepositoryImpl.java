@@ -18,24 +18,24 @@ public class PlayerRepositoryImpl implements PlayerRepository {
 
     @Override
     public List<Player> findAll() {
-        String query = "SELECT * FROM PLAYER";
+        String query = "select * from PLAYER";
         return jdbcTemplate.query(query, playerMapper);
     }
 
     @Override
     public Player findById(long playerId) {
-        String query = "SELECT * FROM PLAYER WHERE PLAYER_ID = ?";
+        String query = "select * from PLAYER where PLAYER_ID = ?";
         return jdbcTemplate.queryForObject(query, playerMapper, playerId);
     }
 
     @Override
     public int addPlayer(Player player) {
-        String query = "INSERT INTO PLAYER(" +
+        String query = "insert into PLAYER(" +
                 "PLAYER_ID, FULL_NAME, POSITIONS, OVERALL, " +
                 "INSIDE_SCORING, MID_RANGE_SCORING, THREE_POINT_SCORING, " +
                 "INTERIOR_DEFENSE, PERIMETER_DEFENSE, PLAYMAKING, " +
                 "REBOUNDING, PHYSICALS, IQ) " +
-                "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+                "values(?, ?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(query, 
                 player.getPlayerId(),
                 player.getFullName(),
