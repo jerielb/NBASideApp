@@ -24,6 +24,8 @@ public class Team {
 	private String physicals;
 	private String iq;
 	
+	private int leagueId;
+	
 	private List<Player> roster = new ArrayList<>();
 	
 	// constructor
@@ -132,6 +134,14 @@ public class Team {
 	
 	public void setIq(String iq) {
 		this.iq = iq;
+	}
+	
+	public String getLeagueId() {
+		return iq;
+	}
+	
+	public void setLeagueId(int leagueId) {
+		this.leagueId = leagueId;
 	}
 	
 	public List<Player> getRoster() {

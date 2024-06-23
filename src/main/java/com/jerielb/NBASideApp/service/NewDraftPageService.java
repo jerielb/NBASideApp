@@ -1,6 +1,5 @@
 package com.jerielb.NBASideApp.service;
 
-import com.jerielb.NBASideApp.controller.DraftPageController;
 import com.jerielb.NBASideApp.model.GradesUtil;
 import com.jerielb.NBASideApp.model.Player;
 import com.jerielb.NBASideApp.model.Team;
@@ -15,9 +14,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DraftPageService {
+public class NewDraftPageService {
     // variables
-    private final Logger LOGGER = LogManager.getLogger(DraftPageController.class);
+    private final Logger LOGGER = LogManager.getLogger(NewDraftPageService.class);
 	private static int leagueSize;
 	private static int rosterSize;
 	private static List<Team> league = new ArrayList<>();
@@ -30,7 +29,7 @@ public class DraftPageService {
     
     // constructor
 	@Autowired
-    public DraftPageService(PlayerRepository playerRepository) {
+    public NewDraftPageService(PlayerRepository playerRepository) {
 		this.playerRepository = playerRepository;
 	}
 	

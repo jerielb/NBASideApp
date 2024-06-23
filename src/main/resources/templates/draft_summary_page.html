@@ -95,12 +95,18 @@
 					<nav>
 						<ul class="pagination justify-content-evenly overflow-auto">
 							<li  th:each="i : ${#numbers.sequence(1, leagueSize)}">
-								
-								<form method="post" action="#" th:action="@{/draft_summary_page/team}">
-									<input class="page-link" type="submit" value="#" 
-										   name="teamIndex" th:value="${i}">
-								</form>
-								
+								<span th:if="${loadPage}">
+									<form method="post" action="#" th:action="@{/draft_summary_page/{id}/team(id=${league_id})}">
+										<input class="page-link" type="submit" value="#"
+											   name="teamIndex" th:value="${i}">
+									</form>
+								</span>
+								<span th:if="${!loadPage}">
+									<form method="post" action="#" th:action="@{/draft_summary_page/team}">
+										<input class="page-link" type="submit" value="#" 
+											   name="teamIndex" th:value="${i}">
+									</form>
+								</span>
 							</li>
 						</ul>
 					</nav>

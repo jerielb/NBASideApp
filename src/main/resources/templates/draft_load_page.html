@@ -20,27 +20,27 @@
 	
 	<main class="container border" style="height:85vh">
 		<div>
-			<h3>LOAD_DRAFT</h3>
+			<h3>LOAD DRAFT</h3>
 			<table class="table">
 				<thead class="table-dark sticky-top">
-				<tr>
-					<th scope="col">NAME</th>
-					<th scope="col">TEAMS</th>
-					<th scope="col">ROSTER</th>
-					<th scope="col"></th>
-				</tr>
+					<tr>
+						<th scope="col">NAME</th>
+						<th scope="col">TEAMS</th>
+						<th scope="col">ROSTER</th>
+						<th scope="col"></th>
+					</tr>
 				</thead>
 				<tbody th:each="league : ${leagues}">
-				<tr>
-					<td th:text="${league.leagueName}">name</td>
-					<td>teams</td>
-					<td>roster</td>
-					<td>
-						<form method="post" action="#" th:action="@{/#}">
-							<input type="submit" value="select">
-						</form>
-					</td>
-				</tr>
+					<tr>
+						<td th:text="${league.leagueName}">name</td>
+						<td th:text="${league.leagueSize}">teams</td>
+						<td th:text="${league.RosterSize}">roster</td>
+						<td>
+							<a href="draft_summary_page.html" th:href="@{/draft_summary_page/{id}(id=${league.leagueId})}">
+								<input type="submit" value="select">
+							</a>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 			

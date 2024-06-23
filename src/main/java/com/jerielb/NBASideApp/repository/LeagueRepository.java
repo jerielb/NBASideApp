@@ -1,6 +1,7 @@
 package com.jerielb.NBASideApp.repository;
 
 import com.jerielb.NBASideApp.model.League;
+import com.jerielb.NBASideApp.model.Team;
 
 import java.util.List;
 
@@ -10,5 +11,7 @@ import java.util.List;
  **/
 public interface LeagueRepository {
 	List<League> findAll();
+	League getLeagueId(int id);
 	int addLeague(League league);
+	List<Team> getLeagueTeams(int leagueId);
 }

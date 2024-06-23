@@ -15,6 +15,8 @@ public class LeagueRowMapper implements RowMapper<League> {
 		
 		league.setLeagueId(rs.getInt("LEAGUE_ID"));
 		league.setLeagueName(rs.getString("LEAGUE_NAME"));
+		league.setLeagueSize(rs.getInt("LEAGUE_SIZE"));
+		league.setRosterSize(rs.getInt("ROSTER_SIZE"));
 		return league;
 	}
 }
