@@ -1,4 +1,4 @@
- drop table PLAYER;
+-- drop table PLAYER;
 
 create table PLAYER (
 	PLAYER_ID int primary key, 

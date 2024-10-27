@@ -1,4 +1,5 @@
 ---- foreign keys prevent from truncating a table ----
+
 -- drop table ROSTER;
 
 create table ROSTER (

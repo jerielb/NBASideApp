@@ -1,4 +1,4 @@
- drop table TEAM;
+-- drop table TEAM;
 
 create table TEAM (
 	TEAM_ID int primary key,
