@@ -28,14 +28,10 @@
 						<b>Inside Scoring:</b> <span th:text="${team.insideScoring}">##</span><br>
 						<b>Mid-Range Scoring:</b> <span th:text="${team.midRangeScoring}">##</span><br>
 						<b>3pt Scoring:</b> <span th:text="${team.threePointScoring}">##</span><br>
-						<br>
 						<b>Playmaking:</b> <span th:text="${team.playmaking}">##</span><br>
 						<b>Interior Defense:</b> <span th:text="${team.interiorDefense}">##</span><br>
 						<b>Perimeter Defense:</b> <span th:text="${team.perimeterDefense}">##</span><br>
-						<br>
 						<b>Rebounding:</b> <span th:text="${team.rebounding}">##</span><br>
-						<b>Physicals:</b> <span th:text="${team.physicals}">##</span><br>
-						<b>IQ:</b> <span th:text="${team.iq}">##</span><br>
 						<br>
 						<b>Overall:</b> <span th:text="${team.overall}">##</span><br>
 					</div>
@@ -59,14 +55,11 @@
 								<th scope="col">INS</th>
 								<th scope="col">MID</th>
 								<th scope="col">3PT</th>
-								
 								<th scope="col">PLM</th>
+								
 								<th scope="col">INS_D</th>
 								<th scope="col">PER_D</th>
-								
 								<th scope="col">REB</th>
-								<th scope="col">PHY</th>
-								<th scope="col">IQ</th>
 							</tr>
 						</thead>
 						<tbody th:each="player : ${team.roster}">
@@ -78,14 +71,11 @@
 								<td th:text="${player.insideScoring}">##</td>
 								<td th:text="${player.midRangeScoring}">##</td>
 								<td th:text="${player.threePointScoring}">##</td>
-								
 								<td th:text="${player.playmaking}">##</td>
+								
 								<td th:text="${player.interiorDefense}">##</td>
 								<td th:text="${player.perimeterDefense}">##</td>
-								
 								<td th:text="${player.rebounding}">##</td>
-								<td th:text="${player.physicals}">##</td>
-								<td th:text="${player.iq}">##</td>
 							</tr>
 						</tbody>
 					</table>
@@ -100,7 +90,6 @@
 									<input class="page-link" type="submit" value="#" 
 										   name="teamIndex" th:value="${i}">
 								</form>
-								
 							</li>
 						</ul>
 					</nav>
