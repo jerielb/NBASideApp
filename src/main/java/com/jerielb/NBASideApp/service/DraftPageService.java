@@ -87,11 +87,10 @@ public class DraftPageService {
 		List<String> teamInteriorDefense = new ArrayList<>();
 		List<String> teamPerimeterDefense = new ArrayList<>();
 		
+		List<String> teamOvr = new ArrayList<>();
 		
-		String ins, mid, three, intD, perD, plm, reb;
-		ins = mid = three = intD = perD = plm = reb = "##";
-		
-		float teamOvr = 0;
+		String ins, mid, three, intD, perD, plm, reb, ovr;
+		ins = mid = three = intD = perD = plm = reb = ovr = "##";
 		
 		if (!roster.isEmpty()) {
 			for (Player player : roster) {
@@ -105,8 +104,9 @@ public class DraftPageService {
 				teamInteriorDefense.add(player.getInteriorDefense());
 				teamPerimeterDefense.add(player.getPerimeterDefense());
 				
-				teamOvr += player.getOverall();
+				teamOvr.add(player.getOverall());
 			}
+			
 			ins = GradesUtil.gradeAverage(teamInsideScoring, roster.size());
 			mid = GradesUtil.gradeAverage(teamMidRangeScoring, roster.size());
 			three = GradesUtil.gradeAverage(teamThreePointScoring, roster.size());
@@ -117,7 +117,7 @@ public class DraftPageService {
 			intD = GradesUtil.gradeAverage(teamInteriorDefense, roster.size());
 			perD = GradesUtil.gradeAverage(teamPerimeterDefense, roster.size());
 			
-			team.setOverall(Math.round(teamOvr/roster.size()));
+			ovr = GradesUtil.gradeAverage(teamOvr, roster.size());
 		}
 		
 		team.setInsideScoring(ins);
@@ -129,6 +129,8 @@ public class DraftPageService {
 		
 		team.setInteriorDefense(intD);
 		team.setPerimeterDefense(perD);
+		
+		team.setOverall(ovr);
 		
 		LOGGER.info("Updated current team stat averages");
 		return team;

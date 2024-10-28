@@ -16,7 +16,7 @@ public class PlayerRowMapper implements RowMapper<Player> {
         player.setPlayerId(rs.getLong("PLAYER_ID"));
         player.setFullName(rs.getString("FULL_NAME"));
         player.setPositions(rs.getString("POSITIONS"));
-        player.setOverall(rs.getInt("OVERALL"));
+        player.setOverall(rs.getString("OVERALL"));
         
         player.setInsideScoring(rs.getString("INSIDE_SCORING"));
         player.setMidRangeScoring(rs.getString("MID_RANGE_SCORING"));

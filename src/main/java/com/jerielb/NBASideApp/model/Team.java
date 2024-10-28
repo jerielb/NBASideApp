@@ -10,7 +10,7 @@ public class Team {
 	// variables
 	private long teamId;
 	private String teamName;
-	private int overall;
+	private String overall;
 	
 	private String insideScoring;
 	private String midRangeScoring;
@@ -52,11 +52,11 @@ public class Team {
 		this.teamName = teamName;
 	}
 	
-	public int getOverall() {
+	public String getOverall() {
 		return overall;
 	}
 	
-	public void setOverall(int overall) {
+	public void setOverall(String overall) {
 		this.overall = overall;
 	}
 	

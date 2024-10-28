@@ -8,7 +8,7 @@ public class Player {
     private long playerId;
     private String fullName;
     private String positions;
-    private int overall;
+    private String overall;
     
     private String insideScoring;
     private String midRangeScoring;
@@ -48,11 +48,11 @@ public class Player {
         this.positions = positions;
     }
 
-    public int getOverall() {
+    public String getOverall() {
         return overall;
     }
 
-    public void setOverall(int overall) {
+    public void setOverall(String overall) {
         this.overall = overall;
     }
 
