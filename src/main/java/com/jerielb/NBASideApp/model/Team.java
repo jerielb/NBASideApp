@@ -16,13 +16,11 @@ public class Team {
 	private String midRangeScoring;
 	private String threePointScoring;
 	
+	private String playmaking;
+	private String rebounding;
+	
 	private String interiorDefense;
 	private String perimeterDefense;
-	private String playmaking;
-	
-	private String rebounding;
-	private String physicals;
-	private String iq;
 	
 	private List<Player> roster = new ArrayList<>();
 	
@@ -86,22 +84,6 @@ public class Team {
 		this.threePointScoring = threePointScoring;
 	}
 	
-	public String getInteriorDefense() {
-		return interiorDefense;
-	}
-	
-	public void setInteriorDefense(String interiorDefense) {
-		this.interiorDefense = interiorDefense;
-	}
-	
-	public String getPerimeterDefense() {
-		return perimeterDefense;
-	}
-	
-	public void setPerimeterDefense(String perimeterDefense) {
-		this.perimeterDefense = perimeterDefense;
-	}
-	
 	public String getPlaymaking() {
 		return playmaking;
 	}
@@ -118,27 +100,27 @@ public class Team {
 		this.rebounding = rebounding;
 	}
 	
-	public String getPhysicals() {
-		return physicals;
-	}
-	
-	public void setPhysicals(String physicals) {
-		this.physicals = physicals;
-	}
-	
-	public String getIq() {
-		return iq;
-	}
-	
-	public void setIq(String iq) {
-		this.iq = iq;
-	}
-	
 	public List<Player> getRoster() {
 		return roster;
 	}
 	
 	public void setRoster(List<Player> roster) {
 		this.roster = roster;
+	}
+	
+	public String getInteriorDefense() {
+		return interiorDefense;
+	}
+	
+	public void setInteriorDefense(String interiorDefense) {
+		this.interiorDefense = interiorDefense;
+	}
+	
+	public String getPerimeterDefense() {
+		return perimeterDefense;
+	}
+	
+	public void setPerimeterDefense(String perimeterDefense) {
+		this.perimeterDefense = perimeterDefense;
 	}
 }

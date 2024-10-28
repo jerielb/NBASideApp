@@ -13,15 +13,13 @@ public class Player {
     private String insideScoring;
     private String midRangeScoring;
     private String threePointScoring;
-
+    
+    private String playmaking;
+    private String rebounding;
+    
     private String interiorDefense;
     private String perimeterDefense;
-    private String playmaking;
-
-    private String rebounding;
-    private String physicals;
-    private String iq;
-
+    
     // constructor
     public Player() {}
 
@@ -81,23 +79,7 @@ public class Player {
     public void setThreePointScoring(String threePointScoring) {
         this.threePointScoring = threePointScoring;
     }
-
-    public String getInteriorDefense() {
-        return interiorDefense;
-    }
-
-    public void setInteriorDefense(String interiorDefense) {
-        this.interiorDefense = interiorDefense;
-    }
-
-    public String getPerimeterDefense() {
-        return perimeterDefense;
-    }
-
-    public void setPerimeterDefense(String perimeterDefense) {
-        this.perimeterDefense = perimeterDefense;
-    }
-
+    
     public String getPlaymaking() {
         return playmaking;
     }
@@ -113,20 +95,20 @@ public class Player {
     public void setRebounding(String rebounding) {
         this.rebounding = rebounding;
     }
-
-    public String getPhysicals() {
-        return physicals;
+    
+    public String getInteriorDefense() {
+        return interiorDefense;
     }
-
-    public void setPhysicals(String physicals) {
-        this.physicals = physicals;
+    
+    public void setInteriorDefense(String interiorDefense) {
+        this.interiorDefense = interiorDefense;
     }
-
-    public String getIq() {
-        return iq;
+    
+    public String getPerimeterDefense() {
+        return perimeterDefense;
     }
-
-    public void setIq(String iq) {
-        this.iq = iq;
+    
+    public void setPerimeterDefense(String perimeterDefense) {
+        this.perimeterDefense = perimeterDefense;
     }
 }

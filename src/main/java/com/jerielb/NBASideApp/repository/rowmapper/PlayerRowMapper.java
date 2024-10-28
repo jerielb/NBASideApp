@@ -22,13 +22,11 @@ public class PlayerRowMapper implements RowMapper<Player> {
         player.setMidRangeScoring(rs.getString("MID_RANGE_SCORING"));
         player.setThreePointScoring(rs.getString("THREE_POINT_SCORING"));
         
+        player.setPlaymaking(rs.getString("PLAYMAKING"));
+        player.setRebounding(rs.getString("REBOUNDING"));
+        
         player.setInteriorDefense(rs.getString("INTERIOR_DEFENSE"));
         player.setPerimeterDefense(rs.getString("PERIMETER_DEFENSE"));
-        player.setPlaymaking(rs.getString("PLAYMAKING"));
-
-        player.setRebounding(rs.getString("REBOUNDING"));
-        player.setPhysicals(rs.getString("PHYSICALS"));
-        player.setIq(rs.getString("IQ"));
 
         return player;
     }
