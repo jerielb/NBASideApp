@@ -33,9 +33,9 @@ public class PlayerRepositoryImpl implements PlayerRepository {
         String query = "INSERT INTO PLAYER(" +
                 "PLAYER_ID, FULL_NAME, POSITIONS, OVERALL, " +
                 "INSIDE_SCORING, MID_RANGE_SCORING, THREE_POINT_SCORING, " +
-                "INTERIOR_DEFENSE, PERIMETER_DEFENSE, PLAYMAKING, " +
-                "REBOUNDING, PHYSICALS, IQ) " +
-                "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+                "PLAYMAKING, REBOUNDING, " +
+                "INTERIOR_DEFENSE, PERIMETER_DEFENSE) " +
+                "VALUES(?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(query, 
                 player.getPlayerId(),
                 player.getFullName(),
@@ -46,13 +46,11 @@ public class PlayerRepositoryImpl implements PlayerRepository {
                 player.getMidRangeScoring(),
                 player.getThreePointScoring(),
                 
-                player.getInsideScoring(),
-                player.getPerimeterDefense(),
                 player.getPlaymaking(),
+                player.getRebounding(),
                 
-                player.getRebounding(),
-                player.getRebounding(),
-                player.getIq()
+                player.getInteriorDefense(),
+                player.getPerimeterDefense()
         );
     }
     
