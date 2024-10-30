@@ -37,7 +37,9 @@ public class IndexController {
         
         // TODO: make customisable
         int playoffTeams = 16;
-        model.addAttribute("franchises", indexService.getRandomTeams(playoffTeams));
+        model.addAttribute("westFranchises", indexService.getRandomWestTeams(playoffTeams));
+        model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams));
+        
         return "playoffs_bracket";
     }
 }

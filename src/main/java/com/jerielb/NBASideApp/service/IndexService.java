@@ -1,6 +1,9 @@
 package com.jerielb.NBASideApp.service;
 
-import com.jerielb.NBASideApp.model.enums.FranchiseAcr;
+import com.jerielb.NBASideApp.model.enums.EastFranchise;
+import com.jerielb.NBASideApp.model.enums.WestFranchise;
+import com.jerielb.NBASideApp.model.wrappers.EastBracketWrapper;
+import com.jerielb.NBASideApp.model.wrappers.WestBracketWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,25 +15,40 @@ import java.util.*;
 public class IndexService {
     private final Logger LOGGER = LogManager.getLogger(IndexService.class);
     
-//    private Set<FranchiseAcr> teams = new HashSet<>(Arrays.asList(FranchiseAcr.values()));
-    private List<FranchiseAcr> teams = new LinkedList<>(Arrays.asList(FranchiseAcr.values()));
-    
     @Autowired
     public IndexService() {}
     
-    public List<FranchiseAcr> getRandomTeams(int playoffTeams) {
-        List<FranchiseAcr> franchises = new ArrayList<>();
+    public WestBracketWrapper getRandomWestTeams(int playoffTeams) {
+        List<WestFranchise> westFranchises = new ArrayList<>();
+        List<WestFranchise> westTeams = new LinkedList<>(Arrays.asList(WestFranchise.values()));
         
-        for (int i=0; i<playoffTeams; i++) {
-            int randomIndex = new Random().nextInt(teams.size());
-            FranchiseAcr chosen = teams.get(randomIndex);
+        for (int i=0; i<playoffTeams/2; i++) {
+            int randomIndex = new Random().nextInt(westTeams.size());
+            WestFranchise chosen = westTeams.get(randomIndex);
             
-            System.out.println(i + ". Team Chosen: " + chosen);
+            LOGGER.info((i+1) + ". West Team Chosen: " + chosen);
             
-            franchises.add(chosen);
-            teams.remove(randomIndex);
+            westFranchises.add(chosen);
+            westTeams.remove(randomIndex);
         }
         
-        return franchises;
+        return new WestBracketWrapper(playoffTeams, westFranchises);
+    }
+    
+    public EastBracketWrapper getRandomEastTeams(int playoffTeams) {
+        List<EastFranchise> eastFranchises = new ArrayList<>();
+        List<EastFranchise> eastTeams = new LinkedList<>(Arrays.asList(EastFranchise.values()));
+        
+        for (int i=0; i<playoffTeams/2; i++) {
+            int randomIndex = new Random().nextInt(eastTeams.size());
+            EastFranchise chosen = eastTeams.get(randomIndex);
+            
+            LOGGER.info((i+1) + ". East Team Chosen: " + chosen);
+            
+            eastFranchises.add(chosen);
+            eastTeams.remove(randomIndex);
+        }
+        
+        return new EastBracketWrapper(playoffTeams, eastFranchises);
     }
 }

@@ -1,16 +1,15 @@
 package com.jerielb.NBASideApp.model;
 
-import com.jerielb.NBASideApp.model.enums.FranchiseAcr;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Franchise {
 	// variables
 	private long franchiseId;
-	private FranchiseAcr acronym;
+	private String acronym;
 	private String teamCity;
 	private String teamName;
-	private FranchiseAcr active;
+	private String active;
 	
 	// constructor
 	public Franchise() {}
@@ -24,11 +23,11 @@ public class Franchise {
 		this.franchiseId = franchiseId;
 	}
 	
-	public FranchiseAcr getAcronym() {
+	public String getAcronym() {
 		return acronym;
 	}
 	
-	public void setAcronym(FranchiseAcr acronym) {
+	public void setAcronym(String acronym) {
 		this.acronym = acronym;
 	}
 	
@@ -48,11 +47,11 @@ public class Franchise {
 		this.teamName = teamName;
 	}
 	
-	public FranchiseAcr getActive() {
+	public String getActive() {
 		return active;
 	}
 	
-	public void setActive(FranchiseAcr active) {
+	public void setActive(String active) {
 		this.active = active;
 	}
 	
