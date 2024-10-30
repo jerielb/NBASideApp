@@ -1,5 +1,6 @@
 package com.jerielb.NBASideApp.model;
 
+import com.jerielb.NBASideApp.model.utils.GradesUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

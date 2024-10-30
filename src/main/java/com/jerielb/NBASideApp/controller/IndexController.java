@@ -30,4 +30,14 @@ public class IndexController {
 		LOGGER.info("Redirecting to Draft Options page");
 		return "draft_options_page";
     }
+    
+    @GetMapping("/playoffs_bracket")
+    public String getPlayoffsBracketPage(Model model) {
+        LOGGER.info("Redirecting to Playoffs Bracket page");
+        
+        // TODO: make customisable
+        int playoffTeams = 16;
+        model.addAttribute("franchises", indexService.getRandomTeams(playoffTeams));
+        return "playoffs_bracket";
+    }
 }

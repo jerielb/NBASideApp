@@ -1,4 +1,4 @@
-package com.jerielb.NBASideApp.model;
+package com.jerielb.NBASideApp.model.utils;
 
 import org.springframework.stereotype.Component;
 

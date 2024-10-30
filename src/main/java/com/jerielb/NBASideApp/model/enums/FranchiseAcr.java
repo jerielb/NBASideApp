@@ -1,6 +1,6 @@
 package com.jerielb.NBASideApp.model.enums;
 
-public enum Franchise {
+public enum FranchiseAcr {
 	// added display names for HTML (thmyeleaf) code
 	ATL("Atlanta Hawks"),
 	BOS("Boston Celtics"),
@@ -33,10 +33,9 @@ public enum Franchise {
 	UTA("Utah Jazz"),
 	WAS("Washington Wizards");
 	
-	
 	private final String displayValue;
 	
-	Franchise(String displayValue) {
+	FranchiseAcr(String displayValue) {
 		this.displayValue = displayValue;
 	}
 	
