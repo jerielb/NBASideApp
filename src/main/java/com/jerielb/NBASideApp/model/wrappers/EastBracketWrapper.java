@@ -6,90 +6,90 @@ import java.util.List;
 
 public class EastBracketWrapper {
 	// variables
-	private EastFranchise firstSeed;
-	private EastFranchise secondSeed;
-	private EastFranchise thirdSeed;
-	private EastFranchise fourthSeed;
-	private EastFranchise fifthSeed;
-	private EastFranchise sixthSeed;
-	private EastFranchise seventhSeed;
-	private EastFranchise eighthSeed;
+	private EastFranchise firstTeam;
+	private EastFranchise secondTeam;
+	private EastFranchise thirdTeam;
+	private EastFranchise fourthTeam;
+	private EastFranchise fifthTeam;
+	private EastFranchise sixthTeam;
+	private EastFranchise seventhTeam;
+	private EastFranchise eighthTeam;
 	
 	// constructor
 	public EastBracketWrapper(int amount, List<EastFranchise> teams) {
 		// TODO: conf. finals - 2 teams; conf. semis - 4 teams; conf. quarters - 8 teams;
-		firstSeed = teams.get(0);
-		secondSeed = teams.get(1);
-		thirdSeed = teams.get(2);
-		fourthSeed = teams.get(3);
-		fifthSeed = teams.get(4);
-		sixthSeed = teams.get(5);
-		seventhSeed = teams.get(6);
-		eighthSeed = teams.get(7);
+		firstTeam = teams.get(0);
+		secondTeam = teams.get(1);
+		thirdTeam = teams.get(2);
+		fourthTeam = teams.get(3);
+		fifthTeam = teams.get(4);
+		sixthTeam = teams.get(5);
+		seventhTeam = teams.get(6);
+		eighthTeam = teams.get(7);
 	}
 	
-	public EastFranchise getFirstSeed() {
-		return firstSeed;
+	public EastFranchise getFirstTeam() {
+		return firstTeam;
 	}
 	
-	public void setFirstSeed(EastFranchise firstSeed) {
-		this.firstSeed = firstSeed;
+	public void setFirstTeam(EastFranchise firstTeam) {
+		this.firstTeam = firstTeam;
 	}
 	
-	public EastFranchise getSecondSeed() {
-		return secondSeed;
+	public EastFranchise getSecondTeam() {
+		return secondTeam;
 	}
 	
-	public void setSecondSeed(EastFranchise secondSeed) {
-		this.secondSeed = secondSeed;
+	public void setSecondTeam(EastFranchise secondTeam) {
+		this.secondTeam = secondTeam;
 	}
 	
-	public EastFranchise getThirdSeed() {
-		return thirdSeed;
+	public EastFranchise getThirdTeam() {
+		return thirdTeam;
 	}
 	
-	public void setThirdSeed(EastFranchise thirdSeed) {
-		this.thirdSeed = thirdSeed;
+	public void setThirdTeam(EastFranchise thirdTeam) {
+		this.thirdTeam = thirdTeam;
 	}
 	
-	public EastFranchise getFourthSeed() {
-		return fourthSeed;
+	public EastFranchise getFourthTeam() {
+		return fourthTeam;
 	}
 	
-	public void setFourthSeed(EastFranchise fourthSeed) {
-		this.fourthSeed = fourthSeed;
+	public void setFourthTeam(EastFranchise fourthTeam) {
+		this.fourthTeam = fourthTeam;
 	}
 	
-	public EastFranchise getFifthSeed() {
-		return fifthSeed;
+	public EastFranchise getFifthTeam() {
+		return fifthTeam;
 	}
 	
-	public void setFifthSeed(EastFranchise fifthSeed) {
-		this.fifthSeed = fifthSeed;
+	public void setFifthTeam(EastFranchise fifthTeam) {
+		this.fifthTeam = fifthTeam;
 	}
 	
-	public EastFranchise getSixthSeed() {
-		return sixthSeed;
+	public EastFranchise getSixthTeam() {
+		return sixthTeam;
 	}
 	
-	public void setSixthSeed(EastFranchise sixthSeed) {
-		this.sixthSeed = sixthSeed;
+	public void setSixthTeam(EastFranchise sixthTeam) {
+		this.sixthTeam = sixthTeam;
 	}
 	
-	public EastFranchise getSeventhSeed() {
-		return seventhSeed;
+	public EastFranchise getSeventhTeam() {
+		return seventhTeam;
 	}
 	
-	public void setSeventhSeed(EastFranchise seventhSeed) {
-		this.seventhSeed = seventhSeed;
+	public void setSeventhTeam(EastFranchise seventhTeam) {
+		this.seventhTeam = seventhTeam;
 	}
 	
-	public EastFranchise getEighthSeed() {
-		return eighthSeed;
+	public EastFranchise getEighthTeam() {
+		return eighthTeam;
 	}
 	
-	public void setEighthSeed(EastFranchise eighthSeed) {
-		this.eighthSeed = eighthSeed;
+	public void setEighthTeam(EastFranchise eighthTeam) {
+		this.eighthTeam = eighthTeam;
 	}
 	
 }
