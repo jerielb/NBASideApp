@@ -81,18 +81,16 @@ public class DraftPageService {
 		List<String> teamMidRangeScoring = new ArrayList<>();
 		List<String> teamThreePointScoring = new ArrayList<>();
 		
+		List<String> teamPlaymaking = new ArrayList<>();
+		List<String> teamRebounding = new ArrayList<>();
+		
 		List<String> teamInteriorDefense = new ArrayList<>();
 		List<String> teamPerimeterDefense = new ArrayList<>();
-		List<String> teamPlaymaking = new ArrayList<>();
 		
-		List<String> teamRebounding = new ArrayList<>();
-		List<String> teamPhysicals = new ArrayList<>();
-		List<String> teamIq = new ArrayList<>();
+		List<String> teamOvr = new ArrayList<>();
 		
-		String ins, mid, three, intD, perD, plm, reb, phy, iq;
-		ins = mid = three = intD = perD = plm = reb = phy = iq = "##";
-		
-		float teamOvr = 0;
+		String ins, mid, three, intD, perD, plm, reb, ovr;
+		ins = mid = three = intD = perD = plm = reb = ovr = "##";
 		
 		if (!roster.isEmpty()) {
 			for (Player player : roster) {
@@ -100,42 +98,39 @@ public class DraftPageService {
 				teamMidRangeScoring.add(player.getMidRangeScoring());
 				teamThreePointScoring.add(player.getThreePointScoring());
 				
+				teamPlaymaking.add(player.getPlaymaking());
+				teamRebounding.add(player.getRebounding());
+				
 				teamInteriorDefense.add(player.getInteriorDefense());
 				teamPerimeterDefense.add(player.getPerimeterDefense());
-				teamPlaymaking.add(player.getPlaymaking());
 				
-				teamRebounding.add(player.getRebounding());
-				teamPhysicals.add(player.getPhysicals());
-				teamIq.add(player.getIq());
-				
-				teamOvr += player.getOverall();
+				teamOvr.add(player.getOverall());
 			}
+			
 			ins = GradesUtil.gradeAverage(teamInsideScoring, roster.size());
 			mid = GradesUtil.gradeAverage(teamMidRangeScoring, roster.size());
 			three = GradesUtil.gradeAverage(teamThreePointScoring, roster.size());
 			
+			plm = GradesUtil.gradeAverage(teamPlaymaking, roster.size());
+			reb = GradesUtil.gradeAverage(teamRebounding, roster.size());
+			
 			intD = GradesUtil.gradeAverage(teamInteriorDefense, roster.size());
 			perD = GradesUtil.gradeAverage(teamPerimeterDefense, roster.size());
-			plm = GradesUtil.gradeAverage(teamPlaymaking, roster.size());
 			
-			reb = GradesUtil.gradeAverage(teamRebounding, roster.size());
-			phy = GradesUtil.gradeAverage(teamPhysicals, roster.size());
-			iq = GradesUtil.gradeAverage(teamIq, roster.size());
-			
-			team.setOverall(Math.round(teamOvr/roster.size()));
+			ovr = GradesUtil.gradeAverage(teamOvr, roster.size());
 		}
 		
 		team.setInsideScoring(ins);
 		team.setMidRangeScoring(mid);
 		team.setThreePointScoring(three);
 		
+		team.setPlaymaking(plm);
+		team.setRebounding(reb);
+		
 		team.setInteriorDefense(intD);
 		team.setPerimeterDefense(perD);
-		team.setPlaymaking(plm);
 		
-		team.setRebounding(reb);
-		team.setPhysicals(phy);
-		team.setIq(iq);
+		team.setOverall(ovr);
 		
 		LOGGER.info("Updated current team stat averages");
 		return team;
