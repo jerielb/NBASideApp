@@ -36,10 +36,18 @@ public class IndexController {
         LOGGER.info("Redirecting to Playoffs Bracket page");
         
         // TODO: make customisable
-        int playoffTeams = 16;
-        model.addAttribute("westFranchises", indexService.getRandomWestTeams(playoffTeams));
-        model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams));
+//        int playoffTeams = 16;
+//        model.addAttribute("westFranchises", indexService.getRandomWestTeams(playoffTeams));
+//        model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams));
+//
+//        return "playoffs_bracket";
         
-        return "playoffs_bracket";
+        // playoffs options page
+        model.addAttribute("westFranchisesTop", indexService.getWestTeamsTop());
+        model.addAttribute("westFranchisesBottom", indexService.getWestTeamsBottom());
+        model.addAttribute("eastFranchisesTop", indexService.getEastTeamsTop());
+        model.addAttribute("eastFranchisesBottom", indexService.getEastTeamsBottom());
+
+        return "playoffs_options";
     }
 }

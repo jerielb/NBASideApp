@@ -14,13 +14,30 @@ import java.util.*;
 @Service
 public class IndexService {
     private final Logger LOGGER = LogManager.getLogger(IndexService.class);
+    private final List<WestFranchise> WEST_FRANCHISES = List.of(WestFranchise.values());
+    private final List<EastFranchise> EAST_FRANCHISES = List.of(EastFranchise.values());
+    
     
     @Autowired
     public IndexService() {}
     
+    public List<WestFranchise> getWestTeamsTop() {
+        return WEST_FRANCHISES.subList(0,8);
+    }
+    public List<WestFranchise> getWestTeamsBottom() {
+        return WEST_FRANCHISES.subList(8,15);
+    }
+    
+    public List<EastFranchise> getEastTeamsTop() {
+        return EAST_FRANCHISES.subList(0,8);
+    }
+    public List<EastFranchise> getEastTeamsBottom() {
+        return EAST_FRANCHISES.subList(8,15);
+    }
+    
     public WestBracketWrapper getRandomWestTeams(int playoffTeams) {
         List<WestFranchise> westFranchises = new ArrayList<>();
-        List<WestFranchise> westTeams = new LinkedList<>(Arrays.asList(WestFranchise.values()));
+        List<WestFranchise> westTeams = new LinkedList<>(WEST_FRANCHISES);
         
         for (int i=0; i<playoffTeams/2; i++) {
             int randomIndex = new Random().nextInt(westTeams.size());
@@ -37,7 +54,7 @@ public class IndexService {
     
     public EastBracketWrapper getRandomEastTeams(int playoffTeams) {
         List<EastFranchise> eastFranchises = new ArrayList<>();
-        List<EastFranchise> eastTeams = new LinkedList<>(Arrays.asList(EastFranchise.values()));
+        List<EastFranchise> eastTeams = new LinkedList<>(EAST_FRANCHISES);
         
         for (int i=0; i<playoffTeams/2; i++) {
             int randomIndex = new Random().nextInt(eastTeams.size());
