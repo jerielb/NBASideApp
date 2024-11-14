@@ -24,96 +24,58 @@
 <main class="container border" style="height:85vh">
 	<h1>PLAYOFFS OPTIONS PAGE</h1>
 
-	<div class="accordion" id="accordionExample">
-		<div class="accordion-item">
-			<h2 class="accordion-header" id="headingOne">
-				<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-					Four Rounds #16 Teams
-				</button>
-			</h2>
-			<div id="collapseOne" class="accordion-collapse collapse show container" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-				<div class="accordion-body row bg-light">
-					<div id="westFranchises" class="col row">
-						<p class="fw-bold">Western Conference</p>
-						<div class="form-check col">
-							<div th:each="team : ${westFranchisesTop}">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="westFranchisesTop" checked>
-								<label class="form-check-label" for="westFranchisesTop">
-									<span th:text="${team.displayValue}">Default checked radio</span>
-								</label>
-							</div>
-						</div>
-						<div class="form-check col">
-							<div th:each="team : ${westFranchisesBottom}">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="westFranchisesBottom" checked>
-								<label class="form-check-label" for="westFranchisesBottom">
-									<span th:text="${team.displayValue}">Default radio</span>
-								</label>
-							</div>
-						</div>
-					</div>
+	<form class="container row bg-light" method="post" action="#" th:action="@{/playoffs_bracket}">
+		
+		
+		<div id="westFranchises" class="col row">
+			<p class="fw-bold">Western Conference</p>
+			<div class="form-check col">
+				<div th:each="team : ${westFranchisesTop}">
+					<input class="form-check-input" type="radio" name="team" id="westFranchisesTop" th:id="${team}" th:value="${team}">
+					<label class="form-check-label" for="westFranchisesTop" th:for="${team}">
+						<span th:text="${team.displayValue}">Default radio</span>
+					</label>
+				</div>
+			</div>
+			<div class="form-check col">
+				<div th:each="team : ${westFranchisesBottom}">
+					<input class="form-check-input" type="radio" name="team" id="westFranchisesBottom" th:id="${team}" th:value="${team}">
+					<label class="form-check-label" for="westFranchisesBottom" th:for="${team}">
+						<span th:text="${team.displayValue}">Default radio</span>
+					</label>
+				</div>
+			</div>
+		</div>
 
-					<div id="eastFranchises" class="col row">
-						<p class="fw-bold">Eastern Conference</p>
-						<div class="form-check col">
-							<div th:each="team : ${eastFranchisesTop}">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="eastFranchisesTop">
-								<label class="form-check-label" for="eastFranchisesTop">
-									<span th:text="${team.displayValue}">Default radio</span>
-								</label>
-							</div>
-						</div>
-						<div class="form-check col">
-							<div th:each="team : ${eastFranchisesBottom}">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="eastFranchisesBottom">
-								<label class="form-check-label" for="eastFranchisesBottom">
-									<span th:text="${team.displayValue}">Default radio</span>
-								</label>
-							</div>
-						</div>
-					</div>
-					
+		<div id="eastFranchises" class="col row">
+			<p class="fw-bold">Eastern Conference</p>
+			<div class="form-check col">
+				<div th:each="team : ${eastFranchisesTop}">
+					<input class="form-check-input" type="radio" name="team" id="eastFranchisesTop" th:id="${team}" th:value="${team}">
+					<label class="form-check-label" for="eastFranchisesTop" th:for="${team}">
+						<span th:text="${team.displayValue}">Default radio</span>
+					</label>
+				</div>
+			</div>
+			<div class="form-check col">
+				<div th:each="team : ${eastFranchisesBottom}">
+					<input class="form-check-input" type="radio" name="team" id="eastFranchisesBottom" th:id="${team}" th:value="${team}">
+					<label class="form-check-label" for="eastFranchisesBottom" th:for="${team}">
+						<span th:text="${team.displayValue}">Default radio</span>
+					</label>
 				</div>
 			</div>
 		</div>
 		
-		<div class="accordion-item">
-			<h2 class="accordion-header" id="headingTwo">
-				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-					TODO - Three Rounds #8 Teams
-				</button>
-			</h2>
-			<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-				<div class="accordion-body">
-					<strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-				</div>
-			</div>
+		<div class="row">
+			<input class="col button" type="submit">
+<!--			<input class="col button" type="submit" value="random">-->
+<!--			<input class="col button" type="submit" value="random west">-->
+<!--			<input class="col button" type="submit" value="random east">-->
 		</div>
-		<div class="accordion-item">
-			<h2 class="accordion-header" id="headingThree">
-				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-					TODO - Two Rounds #4 Teams
-				</button>
-			</h2>
-			<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-				<div class="accordion-body">
-					<strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-				</div>
-			</div>
-		</div>
-		<div class="accordion-item">
-			<h2 class="accordion-header" id="headingFour">
-				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-					TODO - One Round #2 Teams
-				</button>
-			</h2>
-			<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-				<div class="accordion-body">
-					<strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-				</div>
-			</div>
-		</div>
-	</div>
+		
+		
+	</form>
 	
 </main>
 </body>

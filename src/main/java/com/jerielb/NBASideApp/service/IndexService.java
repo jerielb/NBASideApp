@@ -42,8 +42,7 @@ public class IndexService {
         for (int i=0; i<playoffTeams/2; i++) {
             int randomIndex = new Random().nextInt(westTeams.size());
             WestFranchise chosen = westTeams.get(randomIndex);
-            
-            LOGGER.info((i+1) + ". West Team Chosen: " + chosen);
+//            LOGGER.info((i+1) + ". West Team Chosen: " + chosen);
             
             westFranchises.add(chosen);
             westTeams.remove(randomIndex);
@@ -59,8 +58,7 @@ public class IndexService {
         for (int i=0; i<playoffTeams/2; i++) {
             int randomIndex = new Random().nextInt(eastTeams.size());
             EastFranchise chosen = eastTeams.get(randomIndex);
-            
-            LOGGER.info((i+1) + ". East Team Chosen: " + chosen);
+//            LOGGER.info((i+1) + ". East Team Chosen: " + chosen);
             
             eastFranchises.add(chosen);
             eastTeams.remove(randomIndex);
