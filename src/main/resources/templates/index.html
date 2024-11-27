@@ -19,11 +19,26 @@
 	</header>
 	
 	<main class="container border" style="height:85vh">
-		<div>
-			<a href="draft_options_page.html" th:href="@{/draft_option_page}">DRAFT_TEAM_PAGE</a>
-		</div>
-		<div>
-			<a href="playoffs_options.html" th:href="@{/playoffs_options}">PLAYOFFS_BRACKET</a>
+		<div class="row m-5">
+
+			<div class="card mx-auto p-0" style="width: 18rem;">
+				<img src="/static/team_logo.jpg" th:src="@{/team_logo.jpg}" class="card-img-top mx-auto my-4" alt="draft_team page" style="width:100px; height:100px">
+				<div class="card-body bg-light border-top">
+					<h5 class="card-title mb-3">DRAFT_TEAM_PAGE</h5>
+					<p class="card-text" style="height:100px">Draft players from a pool of current and past NBA players to create teams.</p>
+					<a href="draft_options_page.html" th:href="@{/draft_option_page}" class="btn btn-primary">select</a>
+				</div>
+			</div>
+
+			<div class="card mx-auto p-0" style="width: 18rem;">
+				<img src="/static/playoffs_logo.jpg" th:src="@{/playoffs_logo.png}" class="card-img-top mx-auto my-4" alt="playoffs page" style="width:100px; height:100px">
+				<div class="card-body bg-light border-top">
+					<h5 class="card-title mb-3">PLAYOFFS_BRACKET</h5>
+					<p class="card-text" style="height:100px">Create a random playoffs bracket, with the option to have a user selected team.</p>
+					<a href="playoffs_options.html" th:href="@{/playoffs_options}" class="btn btn-primary">select</a>
+				</div>
+			</div>
+
 		</div>
 	</main>
 </body>
