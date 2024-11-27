@@ -2,30 +2,39 @@ package com.jerielb.NBASideApp.model.enums;
 
 public enum EastFranchise {
 	// added display names for HTML (thmyeleaf) code
-	ATL("Atlanta Hawks"),
-	BOS("Boston Celtics"),
-	BRK("Brooklyn Nets"),
-	CHI("Chicago Bulls"),
-	CHO("Charlotte Hornets"),
-	CLE("Cleveland Cavaliers"),
-	DET("Detroit Pistons"),
-	IND("Indiana Pacers"),
-	MIA("Miami Heat"),
-	MIL("Milwaukee Bucks"),
-	NYK("New York Knicks"),
-	ORL("Orlando Magic"),
-	PHI("Philadelphia 76ers"),
-	TOR("Toronto Raptors"),
-	WAS("Washington Wizards");
+	ATL("Atlanta Hawks", false),
+	BOS("Boston Celtics", false),
+	BRK("Brooklyn Nets", false),
+	CHI("Chicago Bulls", false),
+	CHO("Charlotte Hornets", false),
+	CLE("Cleveland Cavaliers", false),
+	DET("Detroit Pistons", false),
+	IND("Indiana Pacers", false),
+	MIA("Miami Heat", false),
+	MIL("Milwaukee Bucks", false),
+	NYK("New York Knicks", false),
+	ORL("Orlando Magic", false),
+	PHI("Philadelphia 76ers", false),
+	TOR("Toronto Raptors", false),
+	WAS("Washington Wizards", false);
 	
 	private final String displayValue;
+	private boolean selected;
 	
-	EastFranchise(String displayValue) {
+	EastFranchise(String displayValue, boolean selected) {
 		this.displayValue = displayValue;
+		this.selected = selected;
 	}
 	
 	public String getDisplayValue() {
 		return displayValue;
 	}
 	
+	public boolean getSelected() {
+		return selected;
+	}
+	
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
 }

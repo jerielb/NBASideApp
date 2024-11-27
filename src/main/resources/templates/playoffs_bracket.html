@@ -24,7 +24,9 @@
         <div class="col border border-danger">
             <span class="row">1st Round - West</span><hr>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row" th:text="${westFranchises.firstTeam.displayValue}">first team</span>
+            <span class="row" th:text="${westFranchises.firstTeam.displayValue}" 
+                  th:class="'row '+${westFranchises.firstTeam.selected ? 'bg-primary' : 'bg-danger'}"
+            >first team</span>
             <span class="row" th:text="${westFranchises.secondTeam.displayValue}">second team</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row" th:text="${westFranchises.thirdTeam.displayValue}">third team</span>

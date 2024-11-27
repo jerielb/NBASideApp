@@ -1,5 +1,7 @@
 package com.jerielb.NBASideApp.controller;
 
+import com.jerielb.NBASideApp.model.enums.EastFranchise;
+import com.jerielb.NBASideApp.model.enums.WestFranchise;
 import com.jerielb.NBASideApp.service.IndexService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Arrays;
 
 @Controller
 public class IndexController {
@@ -52,8 +56,23 @@ public class IndexController {
         
         // TODO: make customisable
         int playoffTeams = 16;
-        model.addAttribute("westFranchises", indexService.getRandomWestTeams(playoffTeams));
-        model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams));
+        boolean westTeamSelected = false;
+        
+        for (WestFranchise franchise: WestFranchise.values()) {
+            if (franchise.toString().equals(team)) {
+                model.addAttribute("westFranchises", indexService.getRandomWestTeams(playoffTeams, franchise));
+                model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams, null));
+                
+                westTeamSelected = true;
+                break;
+            }
+        }
+        
+        if (!westTeamSelected) {
+            model.addAttribute("westFranchises", indexService.getRandomWestTeams(playoffTeams, null));
+            model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams, 
+                    Arrays.stream(EastFranchise.values()).filter(e -> e.toString().equals(team)).findFirst().get()));
+        }
         
         return "playoffs_bracket";
     }
