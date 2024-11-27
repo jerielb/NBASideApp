@@ -24,32 +24,30 @@
         <div class="col border border-danger">
             <span class="row">1st Round - West</span><hr>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row" th:text="${westFranchises.firstTeam.displayValue}" 
-                  th:class="'row '+${westFranchises.firstTeam.selected ? 'bg-primary' : 'bg-danger'}"
-            >first team</span>
-            <span class="row" th:text="${westFranchises.secondTeam.displayValue}">second team</span>
+            <span class="row border bg-warning" th:text="${westFranchises.firstTeam.displayValue}" th:class="'row border '+${westFranchises.firstTeam.selected ? 'bg-warning' : 'bg-light'}">first team</span>
+            <span class="row border bg-light" th:text="${westFranchises.secondTeam.displayValue}" th:class="'row border '+${westFranchises.secondTeam.selected ? 'bg-warning' : 'bg-light'}">second team</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row" th:text="${westFranchises.thirdTeam.displayValue}">third team</span>
-            <span class="row" th:text="${westFranchises.fourthTeam.displayValue}">fourth team</span>
+            <span class="row border bg-light" th:text="${westFranchises.thirdTeam.displayValue}" th:class="'row border '+${westFranchises.thirdTeam.selected ? 'bg-warning' : 'bg-light'}">third team</span>
+            <span class="row border bg-light" th:text="${westFranchises.fourthTeam.displayValue}" th:class="'row border '+${westFranchises.fourthTeam.selected ? 'bg-warning' : 'bg-light'}">fourth team</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row" th:text="${westFranchises.fifthTeam.displayValue}">fifth team</span>
-            <span class="row" th:text="${westFranchises.sixthTeam.displayValue}">sixth team</span>
+            <span class="row border bg-light" th:text="${westFranchises.fifthTeam.displayValue}" th:class="'row border '+${westFranchises.fifthTeam.selected ? 'bg-warning' : 'bg-light'}">fifth team</span>
+            <span class="row border bg-light" th:text="${westFranchises.sixthTeam.displayValue}" th:class="'row border '+${westFranchises.sixthTeam.selected ? 'bg-warning' : 'bg-light'}">sixth team</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row" th:text="${westFranchises.seventhTeam.displayValue}">seventh team</span>
-            <span class="row" th:text="${westFranchises.eighthTeam.displayValue}">eighth team</span>
+            <span class="row border bg-light" th:text="${westFranchises.seventhTeam.displayValue}" th:class="'row border '+${westFranchises.seventhTeam.selected ? 'bg-warning' : 'bg-light'}">seventh team</span>
+            <span class="row border bg-light" th:text="${westFranchises.eighthTeam.displayValue}" th:class="'row border '+${westFranchises.eighthTeam.selected ? 'bg-warning' : 'bg-light'}">eighth team</span>
             <span class="row">#</span><span class="row">#</span>
         </div>
         <div class="col border border-danger">
             <span class="row">2nd Round - West</span><hr>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row">first team</span>
-            <span class="row">second team</span>
+            <span class="row border bg-light">1st | 2nd team</span>
+            <span class="row border bg-light">3rd | 4th team</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row">third team</span>
-            <span class="row">fourth team</span>
+            <span class="row border bg-light">5th | 6th team</span>
+            <span class="row border bg-light">7th | 8th team</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
         </div>
@@ -59,34 +57,36 @@
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row">first team</span>
-            <span class="row">second team</span>
+            <span class="row border bg-light">1st | 2nd | 3rd | 4th team</span>
+            <span class="row border bg-light">5th | 6th | 7th | 8th team</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
         </div>
+        
         <div class="col border border-danger">
             <span class="row">NBA Finals</span><hr>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row">WEST team</span>
-            <span class="row">EAST team</span>
+            <span class="row border bg-light">WEST team</span>
+            <span class="row border bg-light">EAST team</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
         </div>
+        
         <div class="col border border-danger">
             <span class="row">East Finals</span><hr>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row">first team</span>
-            <span class="row">second team</span>
+            <span class="row border bg-light">1st | 2nd | 3rd | 4th team</span>
+            <span class="row border bg-light">5th | 6th | 7th | 8th team</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
@@ -96,30 +96,30 @@
             2nd Round - East<hr>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row">first team</span>
-            <span class="row">second team</span>
+            <span class="row border bg-light">1st | 2nd team</span>
+            <span class="row border bg-light">3rd | 4th team</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row">third team</span>
-            <span class="row">fourth team</span>
+            <span class="row border bg-light">5th | 6th team</span>
+            <span class="row border bg-light">7th | 8th team</span>
             <span class="row">#</span><span class="row">#</span>
             <span class="row">#</span><span class="row">#</span>
         </div>
         <div class="col border border-danger">
             1st Round - East<hr>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row" th:text="${eastFranchises.firstTeam.displayValue}">first team</span>
-            <span class="row" th:text="${eastFranchises.secondTeam.displayValue}">second team</span>
+            <span class="row border bg-light" th:text="${eastFranchises.firstTeam.displayValue}" th:class="'row border '+${eastFranchises.firstTeam.selected ? 'bg-warning' : 'bg-light'}">first team</span>
+            <span class="row border bg-light" th:text="${eastFranchises.secondTeam.displayValue}" th:class="'row border '+${eastFranchises.secondTeam.selected ? 'bg-warning' : 'bg-light'}">second team</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row" th:text="${eastFranchises.thirdTeam.displayValue}">third team</span>
-            <span class="row" th:text="${eastFranchises.fourthTeam.displayValue}">fourth team</span>
+            <span class="row border bg-light" th:text="${eastFranchises.thirdTeam.displayValue}" th:class="'row border '+${eastFranchises.thirdTeam.selected ? 'bg-warning' : 'bg-light'}">third team</span>
+            <span class="row border bg-light" th:text="${eastFranchises.fourthTeam.displayValue}" th:class="'row border '+${eastFranchises.fourthTeam.selected ? 'bg-warning' : 'bg-light'}">fourth team</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row" th:text="${eastFranchises.fifthTeam.displayValue}">fifth team</span>
-            <span class="row" th:text="${eastFranchises.sixthTeam.displayValue}">sixth team</span>
+            <span class="row border bg-light" th:text="${eastFranchises.fifthTeam.displayValue}" th:class="'row border '+${eastFranchises.fifthTeam.selected ? 'bg-warning' : 'bg-light'}">fifth team</span>
+            <span class="row border bg-light" th:text="${eastFranchises.sixthTeam.displayValue}" th:class="'row border '+${eastFranchises.sixthTeam.selected ? 'bg-warning' : 'bg-light'}">sixth team</span>
             <span class="row">#</span><span class="row">#</span>
-            <span class="row" th:text="${eastFranchises.seventhTeam.displayValue}">seventh team</span>
-            <span class="row" th:text="${eastFranchises.eighthTeam.displayValue}">eighth team</span>
+            <span class="row border bg-light" th:text="${eastFranchises.seventhTeam.displayValue}" th:class="'row border '+${eastFranchises.seventhTeam.selected ? 'bg-warning' : 'bg-light'}">seventh team</span>
+            <span class="row border bg-light" th:text="${eastFranchises.eighthTeam.displayValue}" th:class="'row border '+${eastFranchises.eighthTeam.selected ? 'bg-warning' : 'bg-light'}">eighth team</span>
             <span class="row">#</span><span class="row">#</span>
         </div>
     </div>

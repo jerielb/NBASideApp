@@ -52,7 +52,7 @@ public class IndexController {
     
     @PostMapping("/playoffs_bracket")
     public String loadPlayoffBracket(@RequestParam String team, Model model) {
-        LOGGER.info("Selected team: " + team);
+//	    LOGGER.info("Selected team: {}", team);
         
         // TODO: make customisable
         int playoffTeams = 16;

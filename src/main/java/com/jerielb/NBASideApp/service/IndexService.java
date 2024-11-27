@@ -40,6 +40,7 @@ public class IndexService {
         List<WestFranchise> westTeams = new LinkedList<>(WEST_FRANCHISES);
         boolean playerTeam = false;
         if (team != null) {
+            LOGGER.info("Western team selected: {}", team);
             team.setSelected(true);
             westTeams.remove(team);
             playerTeam = true;
@@ -48,6 +49,7 @@ public class IndexService {
         for (int i=0; i<playoffTeams/2; i++) {
             int randomIndex = new Random().nextInt(westTeams.size());
             WestFranchise chosen = westTeams.get(randomIndex);
+            chosen.setSelected(false);
 //            LOGGER.info((i+1) + ". West Team Chosen: " + chosen);
             if (playerTeam && (new Random().nextBoolean())) {
                 westFranchises.add(team);
@@ -69,7 +71,9 @@ public class IndexService {
         List<EastFranchise> eastFranchises = new ArrayList<>();
         List<EastFranchise> eastTeams = new LinkedList<>(EAST_FRANCHISES);
         boolean playerTeam = false;
+        
         if (team != null) {
+            LOGGER.info("Eastern team selected: {}", team);
             team.setSelected(true);
             eastTeams.remove(team);
             playerTeam = true;
@@ -78,9 +82,10 @@ public class IndexService {
         for (int i=0; i<playoffTeams/2; i++) {
             int randomIndex = new Random().nextInt(eastTeams.size());
             EastFranchise chosen = eastTeams.get(randomIndex);
+            chosen.setSelected(false);
 //            LOGGER.info((i+1) + ". East Team Chosen: " + chosen);
             if (playerTeam && (new Random().nextBoolean())) {
-                eastTeams.add(team);
+                eastFranchises.add(team);
                 playerTeam = false;
             }
             
