@@ -20,40 +20,55 @@
 			NBA Side App
 		</h1>
 	</header>
-	
+
 	<main class="container border" style="height:85vh">
-		<div>
-<!--			<a href="draft_page.html" th:href="@{/draft_page}">NEW_DRAFT</a>-->
-			<h3>NEW DRAFT</h3>
-			<form method="post" action="draft_page.html" th:action="@{/draft_page}">
-				<fieldset>
-					<!-- thymeleaf would recognise this from the name="" attribute from the select tag -->
-					<label for="league_size">League Size:</label>
-					<select id="league_size" name="league_size">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="4">4</option>
-						<option value="8">8</option>
-						<option value="16" selected>16</option>
-						<option value="30">30</option>
-					</select>
-				</fieldset><br>
-				<fieldset>
-					<label for="roster_size">Roster Size:</label>
-					<select id="roster_size" name="roster_size">
-						<option value="5">5</option>
-						<option value="8">8</option>
-						<option value="10" selected>10</option>
-						<option value="13">13</option>
-						<option value="15">15</option>
-					</select>
-				</fieldset>
-				<input type="submit" value="select">
-			</form>
-		</div>
-		<hr>
-		<div>
-			<a href="placeholder.html" th:href="@{/placeholder}">LOAD_DRAFT</a>
+		<div class="row mt-5 mx-5">
+			<div class="card mx-auto p-0">
+				<div class="card-body bg-light border-top">
+					<h5 class="card-title mb-3">NEW_DRAFT</h5>
+					<p class="card-text" style="height:25px">Draft players for one or more teams in a new league.</p>
+					<form method="post" action="draft_page.html" th:action="@{/draft_page}">
+						<div class="row">
+							<fieldset class="col">
+								<!-- thymeleaf would recognise this from the name="" attribute from the select tag -->
+								<label for="league_size"><b>League Size:</b></label>
+								<select id="league_size" class="form-select form-select-sm" name="league_size">
+									<option value="1">1 Team</option>
+									<option value="2">2 Teams</option>
+									<option value="4">4 Teams</option>
+									<option value="8">8 Teams</option>
+									<option value="16" selected>16 Teams</option>
+									<option value="30">30 Teams</option>
+								</select>
+							</fieldset>
+							<fieldset class="col">
+								<label for="roster_size"><b>Roster Size:</b></label>
+								<select id="roster_size" class="form-select form-select-sm" name="roster_size">
+									<option value="5" selected>5 Players</option>
+									<option value="8">8 Players</option>
+									<option value="10">10 Players</option>
+									<option value="13">13 Players</option>
+									<option value="15">15 Players</option>
+								</select>
+							</fieldset>
+						</div>
+						<div class="row p-3">
+							<input type="submit" value="select" class="btn btn-primary" style="width:100%">
+						</div>
+					</form>
+					<!--				<a href="#" >select</a>-->
+				</div>
+			</div>
+			<p></p> <!-- spacer -->
+			<div class="card mx-auto p-0">
+				<div class="card-body bg-light border-top">
+					<h5 class="card-title mb-3">LOAD_DRAFT</h5>
+					<p class="card-text" style="height:25px">Load a previously draft league.</p>
+					<div class="row p-3">
+						<a href="#" class="btn btn-primary disabled" style="width:100%">to be implemented</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</main>
 </body>
