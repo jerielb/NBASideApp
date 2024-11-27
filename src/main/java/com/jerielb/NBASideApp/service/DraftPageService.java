@@ -1,7 +1,7 @@
 package com.jerielb.NBASideApp.service;
 
 import com.jerielb.NBASideApp.controller.DraftPageController;
-import com.jerielb.NBASideApp.model.GradesUtil;
+import com.jerielb.NBASideApp.model.utils.GradesUtil;
 import com.jerielb.NBASideApp.model.Player;
 import com.jerielb.NBASideApp.model.Team;
 import com.jerielb.NBASideApp.repository.PlayerRepository;
