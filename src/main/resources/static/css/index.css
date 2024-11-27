@@ -1,3 +1,10 @@
 .home-icon {
     text-decoration:none
 }
+
+.roster-row {
+   line-height: 25px;
+   min-height: 25px;
+   height: 25px;
+   background-color: coral;
+}
