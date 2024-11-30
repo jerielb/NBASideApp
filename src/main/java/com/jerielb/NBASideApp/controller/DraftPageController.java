@@ -42,7 +42,7 @@ public class DraftPageController {
 		if (fullTeam) {
 			LOGGER.info("Full roster drafted");
 			LOGGER.info("Redirecting to Draft Summary page");
-			return "redirect:/draft_summary_page";
+			return "redirect:/draft_summary";
 		}
 		
 		model.addAttribute("players", draftPageService.getDraftPool());
@@ -51,21 +51,21 @@ public class DraftPageController {
 		return "draft_page";
 	}
 	
-	@GetMapping("/draft_summary_page")
+	@GetMapping("/draft_summary")
 	public String draftSummary(Model model) {
 		model.addAttribute("leagueSize", draftPageService.getLeagueSize());
 		model.addAttribute("team", draftPageService.getTeamAtIndex(0));
 		
-		return "draft_summary_page";
+		return "draft_summary";
 	}
 	
-	@PostMapping("/draft_summary_page/team")
+	@PostMapping("/draft_summary/team")
 	public String draftSummaryTeam(@RequestParam int teamIndex, Model model) {
 		LOGGER.debug("Get team in league index: " + teamIndex);
 		
 		model.addAttribute("leagueSize", draftPageService.getLeagueSize());
 		model.addAttribute("team", draftPageService.getTeamAtIndex(teamIndex-1));
 		
-		return "draft_summary_page";
+		return "draft_summary";
 	}
 }

@@ -31,10 +31,10 @@ public class IndexController {
         return "redirect:/";
     }
     
-    @GetMapping("/draft_option_page")
+    @GetMapping("/draft_options")
     public String getDraftTeamPage(Model model) {
 		LOGGER.info("Redirecting to Draft Options page");
-		return "draft_options_page";
+		return "draft_options";
     }
     
     @GetMapping("/playoffs_options")
