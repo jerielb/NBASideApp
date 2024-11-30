@@ -34,6 +34,7 @@
 				</p>
 	
 				<form class="container row bg-light" method="post" action="playoffs_bracket.html" th:action="@{/playoffs_bracket}">
+					
 					<div class="row">
 						<div id="westFranchises" class="row col">
 							<p class="fw-bold">Western Conference</p>
@@ -75,8 +76,13 @@
 							</div>
 						</div>
 					</div>
-	
-					<div class="row p-3">
+					
+					<div class="invisible">
+						<input class="form-check-input invisible" type="radio" name="team" id="random" th:value="random" checked>
+						<label for="random">hidden default</label>
+					</div>
+					
+					<div class="row p-1">
 						<input class="btn btn-primary col" type="submit" value="Continue">
 						<span class="col-1"></span>
 						<a href="#" class="btn btn-warning col disabled" style="width:100%">Choose Random Team</a>

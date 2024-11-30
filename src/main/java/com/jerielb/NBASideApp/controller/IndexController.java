@@ -52,26 +52,32 @@ public class IndexController {
     
     @PostMapping("/playoffs_bracket")
     public String loadPlayoffBracket(@RequestParam String team, Model model) {
-//	    LOGGER.info("Selected team: {}", team);
+	    LOGGER.info("Selected team: {}", team);
         
         // TODO: make customisable
         int playoffTeams = 16;
         boolean westTeamSelected = false;
         
-        for (WestFranchise franchise: WestFranchise.values()) {
-            if (franchise.toString().equals(team)) {
-                model.addAttribute("westFranchises", indexService.getRandomWestTeams(playoffTeams, franchise));
-                model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams, null));
-                
-                westTeamSelected = true;
-                break;
-            }
-        }
-        
-        if (!westTeamSelected) {
+        if (team.equals("random")) {
             model.addAttribute("westFranchises", indexService.getRandomWestTeams(playoffTeams, null));
-            model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams, 
-                    Arrays.stream(EastFranchise.values()).filter(e -> e.toString().equals(team)).findFirst().get()));
+            model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams, null));
+            
+        } else {
+            for (WestFranchise franchise : WestFranchise.values()) {
+                if (franchise.toString().equals(team)) {
+                    model.addAttribute("westFranchises", indexService.getRandomWestTeams(playoffTeams, franchise));
+                    model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams, null));
+                    
+                    westTeamSelected = true;
+                    break;
+                }
+            }
+            
+            if (!westTeamSelected) {
+                model.addAttribute("westFranchises", indexService.getRandomWestTeams(playoffTeams, null));
+                model.addAttribute("eastFranchises", indexService.getRandomEastTeams(playoffTeams,
+                        Arrays.stream(EastFranchise.values()).filter(e -> e.toString().equals(team)).findFirst().get()));
+            }
         }
         
         return "playoffs_bracket";
