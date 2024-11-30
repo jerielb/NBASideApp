@@ -39,7 +39,7 @@ public class IndexController {
     
     @GetMapping("/playoffs_options")
     public String getPlayoffsBracketPage(Model model) {
-        LOGGER.info("Redirecting to Playoffs Bracket page");
+        LOGGER.info("Redirecting to Playoffs Options page");
         
         // playoffs options page
         model.addAttribute("westFranchisesTop", indexService.getWestTeamsTop());
