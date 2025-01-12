@@ -31,7 +31,7 @@ public class DraftPageController {
 		model.addAttribute("teamIndex", draftPageService.getTeamIndex()+1);
 		
 		LOGGER.info("Redirecting to Draft page");
-		return "draft_page";
+		return "draft_team/draft_page";
 	}
 	
 	@PostMapping("/draft_page/draft_player")
@@ -48,7 +48,7 @@ public class DraftPageController {
 		model.addAttribute("players", draftPageService.getDraftPool());
 		model.addAttribute("team", draftPageService.getTeam());
 		model.addAttribute("teamIndex", draftPageService.getTeamIndex()+1);
-		return "draft_page";
+		return "draft_team/draft_page";
 	}
 	
 	@GetMapping("/draft_summary")
@@ -56,7 +56,7 @@ public class DraftPageController {
 		model.addAttribute("leagueSize", draftPageService.getLeagueSize());
 		model.addAttribute("team", draftPageService.getTeamAtIndex(0));
 		
-		return "draft_summary";
+		return "draft_team/draft_summary";
 	}
 	
 	@PostMapping("/draft_summary/team")
@@ -66,6 +66,6 @@ public class DraftPageController {
 		model.addAttribute("leagueSize", draftPageService.getLeagueSize());
 		model.addAttribute("team", draftPageService.getTeamAtIndex(teamIndex-1));
 		
-		return "draft_summary";
+		return "draft_team/draft_summary";
 	}
 }

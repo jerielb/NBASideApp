@@ -34,7 +34,7 @@ public class IndexController {
     @GetMapping("/draft_options")
     public String getDraftTeamPage(Model model) {
 		LOGGER.info("Redirecting to Draft Options page");
-		return "draft_options";
+		return "draft_team/draft_options";
     }
     
     @GetMapping("/playoffs_options")
