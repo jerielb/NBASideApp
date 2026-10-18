@@ -28,31 +28,29 @@ public class GradesUtil {
 				
 				case "C+": total += 3; break;
 				case "C": total += 2; break;
-				case "C-": total += 1; break;
+				case "C-", "D+", "D": total += 1; break;
 				
-				case "D+": total += 1; break;
+				case "F": break;
 				default: // "S" grade
 					total += 10; 
 			}
 		}
 		
 		// get Letter grade from rounded average
-		switch((int) Math.round(total/rosterSize)) {
-			case 9: result = "A+"; break;
-			case 8: result = "A"; break;
-			case 7: result = "A-"; break;
-			
-			case 6: result = "B+"; break;
-			case 5: result = "B"; break;
-			case 4: result = "B-"; break;
-			
-			case 3: result = "C+"; break;
-			case 2: result = "C"; break;
-			case 1: result = "C-"; break;
-			
-			default: // case 10
-				result = "S";
-		}
+		System.out.println("Total: " + total + ", RosterSize: " + rosterSize);
+		result = switch ((int) Math.round(total / rosterSize)) {
+			case 9 -> "A+";
+			case 8 -> "A";
+			case 7 -> "A-";
+			case 6 -> "B+";
+			case 5 -> "B";
+			case 4 -> "B-";
+			case 3 -> "C+";
+			case 2 -> "C";
+			case 1 -> "C-";
+			default -> // case 10
+					"S";
+		};
 		
 		return result;
 	}
