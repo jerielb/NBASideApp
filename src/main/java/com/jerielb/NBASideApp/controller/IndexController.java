@@ -82,4 +82,19 @@ public class IndexController {
         
         return "playoffs_bracket";
     }
+    
+    @GetMapping("/random_team_options")
+    public String getRandomTeamOptionsPage(Model model) {
+        LOGGER.info("Redirecting to Random Team Options page");
+        
+        return "random_team_options";
+    }
+    
+    @PostMapping("/random_team")
+    public String getRandomTeamPage(@RequestParam String league, Model model) {
+        LOGGER.info("Selected league: {}", league);
+        model.addAttribute("randomTeam", indexService.getRandomFranchise(league));
+        
+        return "random_team";
+    }
 }

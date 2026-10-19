@@ -1,9 +1,13 @@
 package com.jerielb.NBASideApp.service;
 
+import com.jerielb.NBASideApp.model.Franchise;
 import com.jerielb.NBASideApp.model.enums.EastFranchise;
 import com.jerielb.NBASideApp.model.enums.WestFranchise;
 import com.jerielb.NBASideApp.model.wrappers.EastBracketWrapper;
 import com.jerielb.NBASideApp.model.wrappers.WestBracketWrapper;
+import com.jerielb.NBASideApp.repository.FranchiseRepository;
+import com.jerielb.NBASideApp.repository.PlayerRepository;
+import org.apache.juli.logging.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +21,13 @@ public class IndexService {
     private final List<WestFranchise> WEST_FRANCHISES = List.of(WestFranchise.values());
     private final List<EastFranchise> EAST_FRANCHISES = List.of(EastFranchise.values());
     
+    // repos
+    private final FranchiseRepository franchiseRepository;
     
     @Autowired
-    public IndexService() {}
+    public IndexService(FranchiseRepository franchiseRepository) {
+        this.franchiseRepository = franchiseRepository;
+    }
     
     public List<WestFranchise> getWestTeamsTop() {
         return WEST_FRANCHISES.subList(0,8);
@@ -98,5 +106,11 @@ public class IndexService {
         }
         
         return new EastBracketWrapper(playoffTeams, eastFranchises);
+    }
+    
+    public Franchise getRandomFranchise(String league) {
+        Franchise franchise = franchiseRepository.getRandom(league);
+        LOGGER.info("Random Franchise chosen: " + franchise.getTeamCity() + " " + franchise.getTeamName());
+        return franchise;
     }
 }

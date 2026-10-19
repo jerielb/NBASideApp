@@ -11,45 +11,55 @@
 	</script>
     <title>NBA Side App</title>
 </head>
-<body>
-	<header class="container border">
-		<h1 id="header">
+<body class="bg-primary">
+	<header class="container">
+		<h3 id="header">
 			<a href="index.html" th:href="@{/logo}" class="home-icon">
-				<img  style="width:80px; height:80px;" src="/static/home_logo.png" th:src="@{/home_logo.png}" alt="home_logo" width="4%"/>
+				<img  style="width:50px; height:50px;" src="/static/images/home.svg" th:src="@{/images/home.svg}" alt="icon" width="2%"/>
 			</a>
-			NBA Side App
-		</h1>
+			Novel Basketball
+		</h3>
 	</header>
 	
-	<main class="container border" style="height:85vh">
+	<main class="container border" style="height:90vh">
 		<div class="row m-5">
 
-			<div class="card mx-auto p-0" style="width: 18rem;">
-				<img src="/static/team_logo.jpg" th:src="@{/team_logo.jpg}" class="card-img-top mx-auto my-4" alt="draft_team page" style="width:100px; height:100px">
+			<div class="card mx-auto p-0 bg-primary" style="width: 18rem;">
+				<img src="/static/images/team.svg" th:src="@{/images/team.svg}" class="card-img-top mx-auto my-4" alt="icon" style="width:100px; height:100px">
 				<div class="card-body bg-light border-top">
-					<h5 class="card-title mb-3">DRAFT_TEAM</h5>
-					<p class="card-text" style="height:100px">Draft players from a pool of current and past NBA players to create teams.</p>
-					<a href="draft_options.html" th:href="@{/draft_options}" class="btn btn-primary" style="width:100%">select</a>
+					<a href="draft_options.html" th:href="@{/draft_options}">
+						<h5 class="card-title btn btn-primary" style="width:100%">Fantasy Team</h5>
+					</a>
+<!--					<a href="draft_options.html" th:href="@{/draft_options}" class="btn btn-primary" style="width:100%">select</a>-->
 				</div>
 			</div>
 
-			<div class="card mx-auto p-0" style="width: 18rem;">
-				<img src="/static/playoffs_logo.jpg" th:src="@{/playoffs_logo.jpg}" class="card-img-top mx-auto my-4" alt="playoffs page" style="width:100px; height:100px">
+			<div class="card mx-auto p-0 bg-primary" style="width: 18rem;">
+				<img src="/static/images/playoffs.svg" th:src="@{/images/playoffs.svg}" class="card-img-top mx-auto my-4" alt="icon" style="width:100px; height:100px">
 				<div class="card-body bg-light border-top">
-					<h5 class="card-title mb-3">PLAYOFFS_BRACKET</h5>
-					<p class="card-text" style="height:100px">Create a random playoffs bracket with the option to have a user selected team.</p>
-					<a href="playoffs_options.html" th:href="@{/playoffs_options}" class="btn btn-primary" style="width:100%">select</a>
+					<a href="playoffs_options.html" th:href="@{/playoffs_options}">
+						<h5 class="card-title btn btn-primary" style="width:100%">Playoffs Bracket</h5>
+					</a>
+<!--					<a href="playoffs_options.html" th:href="@{/playoffs_options}" class="btn btn-primary" style="width:100%">select</a>-->
 				</div>
 			</div>
 
-			<div class="card mx-auto p-0" style="width: 18rem;">
-				<img src="/static/player_logo.jpg" th:src="@{/player_logo.jpg}" class="card-img-top mx-auto my-4" alt="playoffs page" style="width:100px; height:100px">
+			<div class="card mx-auto p-0 bg-primary" style="width: 18rem;">
+				<img src="/static/images/player.svg" th:src="@{/images/player.svg}" class="card-img-top mx-auto my-4" alt="icon" style="width:100px; height:100px">
 				<div class="card-body bg-light border-top">
-					<h5 class="card-title mb-3">PLAYER_UPGRADE</h5>
-					<p class="card-text" style="height:100px">upgrade a player stats</p>
-					<a href="#" class="btn btn-primary disabled" style="width:100%">to be implemented</a>
+					<a href="random_team_options.html" th:href="@{/random_team_options}">
+						<h5 class="card-title btn btn-primary" style="width:100%">Random Team</h5>
+					</a>
 				</div>
 			</div>
+
+<!--			<div class="card mx-auto p-0 bg-primary" style="width: 18rem;">-->
+<!--				<img src="/static/images/player.svg" th:src="@{/images/player.svg}" class="card-img-top mx-auto my-4" alt="icon" style="width:100px; height:100px">-->
+<!--				<div class="card-body bg-light border-top">-->
+<!--					<h5 class="card-title mb-3">PLAYER_UPGRADE</h5>-->
+<!--					<a href="#" class="btn btn-primary disabled" style="width:100%">to be implemented</a>-->
+<!--				</div>-->
+<!--			</div>-->
 
 		</div>
 	</main>
