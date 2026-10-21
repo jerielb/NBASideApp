@@ -13,6 +13,5 @@ main {
 .roster-row {
    line-height: 25px;
    min-height: 25px;
-   height: 25px;
    background-color: coral;
 }

@@ -1,7 +1,6 @@
 package com.jerielb.NBASideApp.service;
 
 import com.jerielb.NBASideApp.controller.DraftPageController;
-import com.jerielb.NBASideApp.model.utils.GradesUtil;
 import com.jerielb.NBASideApp.model.Player;
 import com.jerielb.NBASideApp.model.Team;
 import com.jerielb.NBASideApp.repository.PlayerRepository;
@@ -62,7 +61,7 @@ public class DraftPageService {
 		team.addPlayer(player);
 		draftPool.remove(player);
 		
-		setTeamSummaryStats(team);
+//		setTeamSummaryStats(team);
 		
 		// checks if the last team has a full roster
         if (team.getRoster().size() == rosterSize && teamIndex == league.size()-1) {
@@ -74,67 +73,67 @@ public class DraftPageService {
         }
     }
 	
-	public Team setTeamSummaryStats(Team team) {
-		List<Player> roster = team.getRoster();
-		
-		List<String> teamInsideScoring = new ArrayList<>();
-		List<String> teamMidRangeScoring = new ArrayList<>();
-		List<String> teamThreePointScoring = new ArrayList<>();
-		
-		List<String> teamPlaymaking = new ArrayList<>();
-		List<String> teamRebounding = new ArrayList<>();
-		
-		List<String> teamInteriorDefense = new ArrayList<>();
-		List<String> teamPerimeterDefense = new ArrayList<>();
-		
-		List<String> teamOvr = new ArrayList<>();
-		
-		String ins, mid, three, intD, perD, plm, reb, ovr;
-		ins = mid = three = intD = perD = plm = reb = ovr = "##";
-		
-		if (!roster.isEmpty()) {
-			for (Player player : roster) {
-				teamInsideScoring.add(player.getInsideScoring());
-				teamMidRangeScoring.add(player.getMidRangeScoring());
-				teamThreePointScoring.add(player.getThreePointScoring());
-				
-				teamPlaymaking.add(player.getPlaymaking());
-				teamRebounding.add(player.getRebounding());
-				
-				teamInteriorDefense.add(player.getInteriorDefense());
-				teamPerimeterDefense.add(player.getPerimeterDefense());
-				
-				teamOvr.add(player.getOverall());
-			}
-			
-			ins = GradesUtil.gradeAverage(teamInsideScoring, roster.size());
-			mid = GradesUtil.gradeAverage(teamMidRangeScoring, roster.size());
-			three = GradesUtil.gradeAverage(teamThreePointScoring, roster.size());
-			
-			plm = GradesUtil.gradeAverage(teamPlaymaking, roster.size());
-			reb = GradesUtil.gradeAverage(teamRebounding, roster.size());
-			
-			intD = GradesUtil.gradeAverage(teamInteriorDefense, roster.size());
-			perD = GradesUtil.gradeAverage(teamPerimeterDefense, roster.size());
-			
-			ovr = GradesUtil.gradeAverage(teamOvr, roster.size());
-		}
-		
-		team.setInsideScoring(ins);
-		team.setMidRangeScoring(mid);
-		team.setThreePointScoring(three);
-		
-		team.setPlaymaking(plm);
-		team.setRebounding(reb);
-		
-		team.setInteriorDefense(intD);
-		team.setPerimeterDefense(perD);
-		
-		team.setOverall(ovr);
-		
-		LOGGER.info("Updated current team stat averages");
-		return team;
-	}
+//	public Team setTeamSummaryStats(Team team) {
+//		List<Player> roster = team.getRoster();
+//		
+//		List<String> teamInsideScoring = new ArrayList<>();
+//		List<String> teamMidRangeScoring = new ArrayList<>();
+//		List<String> teamThreePointScoring = new ArrayList<>();
+//		
+//		List<String> teamPlaymaking = new ArrayList<>();
+//		List<String> teamRebounding = new ArrayList<>();
+//		
+//		List<String> teamInteriorDefense = new ArrayList<>();
+//		List<String> teamPerimeterDefense = new ArrayList<>();
+//		
+//		List<String> teamOvr = new ArrayList<>();
+//		
+//		String ins, mid, three, intD, perD, plm, reb, ovr;
+//		ins = mid = three = intD = perD = plm = reb = ovr = "##";
+//		
+//		if (!roster.isEmpty()) {
+//			for (Player player : roster) {
+//				teamInsideScoring.add(player.getInsideScoring());
+//				teamMidRangeScoring.add(player.getMidRangeScoring());
+//				teamThreePointScoring.add(player.getThreePointScoring());
+//				
+//				teamPlaymaking.add(player.getPlaymaking());
+//				teamRebounding.add(player.getRebounding());
+//				
+//				teamInteriorDefense.add(player.getInteriorDefense());
+//				teamPerimeterDefense.add(player.getPerimeterDefense());
+//				
+//				teamOvr.add(player.getOverall());
+//			}
+//			
+//			ins = GradesUtil.gradeAverage(teamInsideScoring, roster.size());
+//			mid = GradesUtil.gradeAverage(teamMidRangeScoring, roster.size());
+//			three = GradesUtil.gradeAverage(teamThreePointScoring, roster.size());
+//			
+//			plm = GradesUtil.gradeAverage(teamPlaymaking, roster.size());
+//			reb = GradesUtil.gradeAverage(teamRebounding, roster.size());
+//			
+//			intD = GradesUtil.gradeAverage(teamInteriorDefense, roster.size());
+//			perD = GradesUtil.gradeAverage(teamPerimeterDefense, roster.size());
+//			
+//			ovr = GradesUtil.gradeAverage(teamOvr, roster.size());
+//		}
+//		
+//		team.setInsideScoring(ins);
+//		team.setMidRangeScoring(mid);
+//		team.setThreePointScoring(three);
+//		
+//		team.setPlaymaking(plm);
+//		team.setRebounding(reb);
+//		
+//		team.setInteriorDefense(intD);
+//		team.setPerimeterDefense(perD);
+//		
+//		team.setOverall(ovr);
+//		
+//		LOGGER.info("Updated current team stat averages");
+//		return team;
+//	}
 	
 	public int getTeamIndex(){
 		return teamIndex;

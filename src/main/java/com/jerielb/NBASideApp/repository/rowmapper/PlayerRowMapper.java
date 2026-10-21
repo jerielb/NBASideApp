@@ -12,22 +12,31 @@ public class PlayerRowMapper implements RowMapper<Player> {
     @Override
     public Player mapRow(ResultSet rs, int rowNum) throws SQLException {
         Player player = new Player();
+        long playerId = rs.getLong("PLAYER_ID");
+        String full_name = rs.getString("FULL_NAME");
+        String image = playerId + "-" + full_name.replace(' ', '_');
 
-        player.setPlayerId(rs.getLong("PLAYER_ID"));
-        player.setFullName(rs.getString("FULL_NAME"));
-        player.setPositions(rs.getString("POSITIONS"));
-        player.setOverall(rs.getString("OVERALL"));
+        player.setPlayerId(playerId);
+        player.setFullName(full_name);
+        player.setImage(image);
         
-        player.setInsideScoring(rs.getString("INSIDE_SCORING"));
-        player.setMidRangeScoring(rs.getString("MID_RANGE_SCORING"));
-        player.setThreePointScoring(rs.getString("THREE_POINT_SCORING"));
+        player.setLayup(rs.getString("LAY"));
+        player.setDunk(rs.getString("DNK"));
+        player.setInsideScoring(rs.getString("INS"));
         
-        player.setPlaymaking(rs.getString("PLAYMAKING"));
-        player.setRebounding(rs.getString("REBOUNDING"));
+        player.setMidRangeScoring(rs.getString("MID"));
+        player.setThreePointScoring(rs.getString("3PT"));
+        player.setFreeThrow(rs.getString("FT"));
         
-        player.setInteriorDefense(rs.getString("INTERIOR_DEFENSE"));
-        player.setPerimeterDefense(rs.getString("PERIMETER_DEFENSE"));
+        player.setDribbling(rs.getString("DRB"));
+        player.setPassing(rs.getString("PAS"));
+        player.setOffensiveRebounding(rs.getString("ORE"));
+        
+        player.setDefensiveRebounding(rs.getString("DRE"));
+        player.setSteal(rs.getString("STL"));
+        player.setBlock(rs.getString("BLK"));
 
+        player.setDrafted(false);
         return player;
     }
 }

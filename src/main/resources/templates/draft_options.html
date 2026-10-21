@@ -11,21 +11,20 @@
 	</script>
 	<title>draft options</title>
 </head>
-<body>
-	<header class="container border">
-		<h1 id="header">
+<body class="bg-primary">
+	<header class="container">
+		<h3 id="header">
 			<a href="index.html" th:href="@{/logo}" class="home-icon">
-				<img  style="width:80px; height:80px;" src="/static/home_logo.png" th:src="@{/home_logo.png}" alt="home_logo" width="4%"/>
+				<img  style="width:50px; height:50px;" src="/static/images/home.svg" th:src="@{/images/home.svg}" alt="icon" width="2%"/>
 			</a>
-			NBA Side App
-		</h1>
+			Novel Basketball
+		</h3>
 	</header>
 
-	<main class="container border" style="height:85vh">
+	<main class="container border" style="height:90vh">
 		<div class="row mt-5 mx-5">
 			<div class="card mx-auto p-0">
 				<div class="card-body bg-light border-top">
-					<h5 class="card-title mb-3">NEW_DRAFT</h5>
 					<p class="card-text" style="height:25px">Draft players for one or more teams in a new league.</p>
 					<form method="post" action="draft_page.html" th:action="@{/draft_page}">
 						<div class="row">
@@ -51,21 +50,37 @@
 									<option value="15">15 Players</option>
 								</select>
 							</fieldset>
+
+							<p class="card-text mt-3 fw-bold" style="height:25px">Draft Restrictions:</p>
+							<fieldset class="form-check">
+								<input class="form-check-input" type="checkbox" value="true" id="playedFor" name="playedFor">
+								<label class="form-check-label" for="playedFor">
+									Teams played for
+								</label>
+							</fieldset>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" id="draftedBy" name="draftedBy">
+								<label class="form-check-label" for="draftedBy">
+									Team drafted by
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="associatedWith" name="associatedWith">
+								<label class="form-check-label" for="associatedWith">
+									Teams associated with
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="singleTeam" name="singleTeam">
+								<label class="form-check-label" for="singleTeam">
+									Draft for a single team
+								</label>
+							</div>
 						</div>
 						<div class="row p-3">
-							<input type="submit" value="select" class="btn btn-primary" style="width:100%">
+							<input type="submit" value="continue" class="btn btn-primary" style="width:100%">
 						</div>
 					</form>
-				</div>
-			</div>
-			<p></p> <!-- spacer -->
-			<div class="card mx-auto p-0">
-				<div class="card-body bg-light border-top">
-					<h5 class="card-title mb-3">LOAD_DRAFT</h5>
-					<p class="card-text" style="height:25px">Load a previously saved draft.</p>
-					<div class="row p-3">
-						<a href="#" class="btn btn-primary disabled" style="width:100%">to be implemented</a>
-					</div>
 				</div>
 			</div>
 		</div>

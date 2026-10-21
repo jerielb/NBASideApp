@@ -11,5 +11,4 @@ import java.util.List;
 public interface PlayerRepository {
     List<Player> findAll();
     Player findById(long playerId);
-    int addPlayer(Player player);
 }
