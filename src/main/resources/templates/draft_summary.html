@@ -27,6 +27,7 @@
 				<div id="team-roster" class="container row p-0" style="height:70%">
 					<div>
 						<h3>Lineup</h3>
+						<span th:text="${team.teamName}">##</span><br>
 						<b>PG</b> <span th:text="${team.insideScoring}">##</span><br>
 						<b>SG</b> <span th:text="${team.midRangeScoring}">##</span><br>
 						<b>SF</b> <span th:text="${team.threePointScoring}">##</span><br>

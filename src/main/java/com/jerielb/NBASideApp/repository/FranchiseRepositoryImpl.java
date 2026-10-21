@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class FranchiseRepositoryImpl implements FranchiseRepository {
@@ -51,6 +53,12 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 	}
 	
 	@Override
+	public List<Long> findPrevious(String franchiseAcronym) {
+		String query = "select FRANCHISE_ID from FRANCHISE where ACTIVE = ?";
+		return jdbcTemplate.queryForList(query, Long.class, franchiseAcronym);
+	}
+	
+	@Override
 	public List<Player> findPlayedFor(long franchiseId) {
 		String query = "select p.* \n" +
 				"from PLAYER p \n" +
@@ -63,14 +71,23 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 	}
 	
 	@Override
-	public List<Long> findPlayedForIds(long franchiseId) {
+	public List<Long> findPlayedForIds(List<Long> franchiseIds) {
+		String placeholders = franchiseIds.stream()
+				.map(n -> "?")
+				.collect(Collectors.joining(", "));
 		String query = "select p.PLAYER_ID \n" +
 				"from PLAYER p \n" +
 				"join PLAYED_FOR pf \n" +
 				"on p.PLAYER_ID = pf.PLAYER_ID \n" +
 				"join FRANCHISE f \n" +
 				"on pf.FRANCHISE_ID = f.FRANCHISE_ID \n" +
-				"where pf.FRANCHISE_ID = ?";
-		return jdbcTemplate.queryForList(query, Long.class, franchiseId);
+				"where pf.FRANCHISE_ID in (" + placeholders + ") \n" +
+				"group by PLAYER_ID";
+		Object[] args = new Object[franchiseIds.size()];
+		for (int i = 0; i < franchiseIds.size(); i++) {
+			args[i] = franchiseIds.get(i);
+		}
+		System.out.println("DEBUG - " + franchiseIds + " -> " + Arrays.toString(args));
+		return jdbcTemplate.queryForList(query, Long.class, args);
 	}
 }

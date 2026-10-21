@@ -127,7 +127,10 @@ public class DraftPageService {
 		List<Player> allPlayers = getAllPlayers();
 		for (Franchise franchise : franchises) {
 			List<Player> players = new ArrayList<>();
-			List<Long> playerIds = franchiseRepository.findPlayedForIds(franchise.getFranchiseId());
+			List<Long> franchiseIds = franchiseRepository.findPrevious(franchise.getAcronym());
+			franchiseIds.add(franchise.getFranchiseId());
+			
+			List<Long> playerIds = franchiseRepository.findPlayedForIds(franchiseIds);
 			for (Long playerId : playerIds) {
 				Player player = allPlayers.get(Math.toIntExact(playerId));
 				players.add(player);
