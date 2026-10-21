@@ -61,4 +61,16 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 				"where pf.FRANCHISE_ID = ?";
 		return jdbcTemplate.query(query, playerMapper, franchiseId);
 	}
+	
+	@Override
+	public List<Long> findPlayedForIds(long franchiseId) {
+		String query = "select p.PLAYER_ID \n" +
+				"from PLAYER p \n" +
+				"join PLAYED_FOR pf \n" +
+				"on p.PLAYER_ID = pf.PLAYER_ID \n" +
+				"join FRANCHISE f \n" +
+				"on pf.FRANCHISE_ID = f.FRANCHISE_ID \n" +
+				"where pf.FRANCHISE_ID = ?";
+		return jdbcTemplate.queryForList(query, Long.class, franchiseId);
+	}
 }

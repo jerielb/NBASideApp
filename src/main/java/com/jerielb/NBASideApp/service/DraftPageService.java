@@ -124,8 +124,14 @@ public class DraftPageService {
 	
 	public void getCurrentTeams(int size) {
 		franchises = franchiseRepository.findCurrent(size);
+		List<Player> allPlayers = getAllPlayers();
 		for (Franchise franchise : franchises) {
-			List<Player> players = franchiseRepository.findPlayedFor(franchise.getFranchiseId());
+			List<Player> players = new ArrayList<>();
+			List<Long> playerIds = franchiseRepository.findPlayedForIds(franchise.getFranchiseId());
+			for (Long playerId : playerIds) {
+				Player player = allPlayers.get(Math.toIntExact(playerId));
+				players.add(player);
+			}
 			playedForPool.put(franchise.getAcronym(), players);
 		}
 	}

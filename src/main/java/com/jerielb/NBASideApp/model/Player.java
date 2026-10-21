@@ -2,6 +2,9 @@ package com.jerielb.NBASideApp.model;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class Player {
     // variables
@@ -26,6 +29,8 @@ public class Player {
     private String block;
     
     private boolean drafted;
+    
+    private List<Franchise> playedFor = new ArrayList<>();
     
     // constructor
     public Player() {}
@@ -157,5 +162,14 @@ public class Player {
     
     public void setDrafted(boolean drafted) {
         this.drafted = drafted;
+    }
+    
+    
+    public List<Franchise> getPlayedFor() {
+        return playedFor;
+    }
+    
+    public void addPlayedForFranchise(Franchise franchise) {
+        playedFor.add(franchise);
     }
 }
