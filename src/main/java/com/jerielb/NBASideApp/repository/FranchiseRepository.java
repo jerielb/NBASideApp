@@ -1,6 +1,7 @@
 package com.jerielb.NBASideApp.repository;
 
 import com.jerielb.NBASideApp.model.Franchise;
+import com.jerielb.NBASideApp.model.Player;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface FranchiseRepository {
 	List<Franchise> findAll();
 	Franchise findById(long franchiseId);
 	Franchise getRandom(String league);
+	List<Franchise> findCurrent(int size);
+	List<Player> findPlayedFor(long franchiseId);
 }

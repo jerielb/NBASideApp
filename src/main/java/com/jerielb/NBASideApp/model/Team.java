@@ -23,13 +23,16 @@ public class Team {
 	private String perimeterDefense;
 	
 	private List<Player> roster = new ArrayList<>();
+	private List<Player> historicRoster = new ArrayList<>();
 	
 	// constructor
 	public Team() {}
 	
 	// functions
-	public void addPlayer(Player player) {
-		if (roster.isEmpty()) {
+	public void addPlayer(Player player, Boolean playedFor) {
+		if (playedFor) {
+			historicRoster.remove(player);
+		} else if (roster.isEmpty()) {
 			setTeamName("Team " + player.getFullName());
 		}
 		roster.add(player);
@@ -122,5 +125,9 @@ public class Team {
 	
 	public void setPerimeterDefense(String perimeterDefense) {
 		this.perimeterDefense = perimeterDefense;
+	}
+	
+	public List<Player> getHistoricRoster() {
+		return historicRoster;
 	}
 }

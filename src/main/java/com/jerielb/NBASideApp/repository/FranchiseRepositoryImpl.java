@@ -1,7 +1,9 @@
 package com.jerielb.NBASideApp.repository;
 
 import com.jerielb.NBASideApp.model.Franchise;
+import com.jerielb.NBASideApp.model.Player;
 import com.jerielb.NBASideApp.repository.rowmapper.FranchiseRowMapper;
+import com.jerielb.NBASideApp.repository.rowmapper.PlayerRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -15,6 +17,8 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 	
 	@Autowired
 	private FranchiseRowMapper franchiseMapper;
+	@Autowired
+	private PlayerRowMapper playerMapper;
 	
 	@Override
 	public List<Franchise> findAll() {
@@ -38,5 +42,23 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 			query = "select * from FRANCHISE where ACTIVE != '' and ACTIVE != ? order by rand() limit 1;";
 		}
 		return jdbcTemplate.queryForObject(query, franchiseMapper, "HL");
+	}
+	
+	@Override
+	public List<Franchise> findCurrent(int size) {
+		String query = "select * from FRANCHISE where ACTIVE = '' order by rand() limit ?";
+		return jdbcTemplate.query(query, franchiseMapper, size);
+	}
+	
+	@Override
+	public List<Player> findPlayedFor(long franchiseId) {
+		String query = "select p.* \n" +
+				"from PLAYER p \n" +
+				"join PLAYED_FOR pf \n" +
+				"on p.PLAYER_ID = pf.PLAYER_ID \n" +
+				"join FRANCHISE f \n" +
+				"on pf.FRANCHISE_ID = f.FRANCHISE_ID \n" +
+				"where pf.FRANCHISE_ID = ?";
+		return jdbcTemplate.query(query, playerMapper, franchiseId);
 	}
 }

@@ -1,5 +1,5 @@
 insert into PLAYED_FOR (
-    FRANCHISE_ID, PLAYER_ID
+    PLAYER_ID, FRANCHISE_ID
 ) VALUES 
 	(0,30),
 	(0,5),
