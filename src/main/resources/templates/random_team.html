@@ -24,7 +24,8 @@
 <main class="container border" style="height:85vh">
 	<div class="row m-5">
 		<div class="card mx-auto p-0 bg-primary" style="width: 18rem;">
-			<img src="/static/images/player.svg" th:src="@{'/images/hoop-land_logos/' +  ${randomTeam.acronym} + '.png'}" class="card-img-top mx-auto my-4" alt="icon" style="width:100px; height:100px">
+			<img src="/static/images/player.svg" th:src="@{'/images/' + ${league} + '_logos/' +  ${randomTeam.acronym} + '.png'}" 
+				 class="card-img-top mx-auto my-4" alt="icon" style="width:100px; height:100px">
 			<div class="card-body bg-light border-top">
 				<h5 class="card-title mb-3" >
 					<span th:text="${randomTeam.teamCity}">TEAM_CITY</span>

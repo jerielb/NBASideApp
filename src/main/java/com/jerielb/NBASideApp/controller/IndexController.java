@@ -94,6 +94,7 @@ public class IndexController {
     public String getRandomTeamPage(@RequestParam String league, Model model) {
         LOGGER.info("Selected league: {}", league);
         model.addAttribute("randomTeam", indexService.getRandomFranchise(league));
+        model.addAttribute("league", league);
         
         return "random_team";
     }

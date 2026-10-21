@@ -38,12 +38,12 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 	public Franchise getRandom(String league) {
 		String query;
 		if (league.equals("hoop-land")) {
-			query = "select * from FRANCHISE where ACTIVE = ? order by rand() limit 1;";
+			query = "select * from FRANCHISE where ACTIVE = 'HL' order by rand() limit 1;";
 		} else {
 			// league = "nba"
-			query = "select * from FRANCHISE where ACTIVE != '' and ACTIVE != ? order by rand() limit 1;";
+			query = "select * from FRANCHISE where ACTIVE = '' order by rand() limit 1;";
 		}
-		return jdbcTemplate.queryForObject(query, franchiseMapper, "HL");
+		return jdbcTemplate.queryForObject(query, franchiseMapper);
 	}
 	
 	@Override
@@ -60,12 +60,9 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 	
 	@Override
 	public List<Player> findPlayedFor(long franchiseId) {
-		String query = "select p.* \n" +
-				"from PLAYER p \n" +
-				"join PLAYED_FOR pf \n" +
-				"on p.PLAYER_ID = pf.PLAYER_ID \n" +
-				"join FRANCHISE f \n" +
-				"on pf.FRANCHISE_ID = f.FRANCHISE_ID \n" +
+		String query = "select p.* from PLAYER p " +
+				"join PLAYED_FOR pf on p.PLAYER_ID = pf.PLAYER_ID " +
+				"join FRANCHISE f on pf.FRANCHISE_ID = f.FRANCHISE_ID " +
 				"where pf.FRANCHISE_ID = ?";
 		return jdbcTemplate.query(query, playerMapper, franchiseId);
 	}
@@ -75,14 +72,10 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 		String placeholders = franchiseIds.stream()
 				.map(n -> "?")
 				.collect(Collectors.joining(", "));
-		String query = "select p.PLAYER_ID \n" +
-				"from PLAYER p \n" +
-				"join PLAYED_FOR pf \n" +
-				"on p.PLAYER_ID = pf.PLAYER_ID \n" +
-				"join FRANCHISE f \n" +
-				"on pf.FRANCHISE_ID = f.FRANCHISE_ID \n" +
-				"where pf.FRANCHISE_ID in (" + placeholders + ") \n" +
-				"group by PLAYER_ID";
+		String query = "select p.PLAYER_ID from PLAYER p " +
+				"join PLAYED_FOR pf on p.PLAYER_ID = pf.PLAYER_ID " +
+				"join FRANCHISE f on pf.FRANCHISE_ID = f.FRANCHISE_ID " +
+				"where pf.FRANCHISE_ID in (" + placeholders + ") group by PLAYER_ID";
 		Object[] args = new Object[franchiseIds.size()];
 		for (int i = 0; i < franchiseIds.size(); i++) {
 			args[i] = franchiseIds.get(i);
