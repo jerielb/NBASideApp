@@ -102,6 +102,7 @@ public class DraftPageService {
 	}
 	
 	public List<Player> getDraftPool() {
+		draftPool.sort(Comparator.comparing(Player::getOverall).reversed());
 		return draftPool;
 	}
 	

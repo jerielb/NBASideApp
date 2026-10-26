@@ -43,21 +43,23 @@
 					<tr>
 						<th class="px-0" scope="col" style="width: 75px;"></th>
 						<th scope="col">NAME</th>
-						<th scope="col" style="width: 60px;">LAY</th>
-						<th scope="col" style="width: 60px;">DNK</th>
-						<th scope="col" style="width: 60px;">INS</th>
+						<th scope="col" style="width: 80px;">POS</th>
+						<th scope="col" style="width: 50px;">LAY</th>
+						<th scope="col" style="width: 50px;">DNK</th>
+						<th scope="col" style="width: 50px;">INS</th>
 						
-						<th scope="col" style="width: 60px;">MID</th>
-						<th scope="col" style="width: 60px;">3PT</th>
-						<th scope="col" style="width: 60px;">FT</th>
+						<th scope="col" style="width: 50px;">MID</th>
+						<th scope="col" style="width: 50px;">3PT</th>
+						<th scope="col" style="width: 50px;">FT</th>
 						
-						<th scope="col" style="width: 60px;">DRB</th>
-						<th scope="col" style="width: 60px;">PAS</th>
-						<th scope="col" style="width: 60px;">ORE</th>
+						<th scope="col" style="width: 50px;">DRB</th>
+						<th scope="col" style="width: 50px;">PAS</th>
+						<th scope="col" style="width: 50px;">ORE</th>
 
-						<th scope="col" style="width: 60px;">DRE</th>
-						<th scope="col" style="width: 60px;">STL</th>
-						<th scope="col" style="width: 60px;">BLK</th>
+						<th scope="col" style="width: 50px;">DRE</th>
+						<th scope="col" style="width: 50px;">STL</th>
+						<th scope="col" style="width: 50px;">BLK</th>
+						<th scope="col" style="width: 50px;">OVR</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -70,6 +72,7 @@
 							</form>
 						</td>
 						<td class="fw-bold" th:text="${player.fullName}">Michael Jordan</td>
+						<td class="fw-bold" th:text="${player.positions}">SG, SF</td>
 						
 						<td class="fw-bold" th:text="${player.layup}">10</td>
 						<td class="fw-bold" th:text="${player.dunk}">10</td>
@@ -86,6 +89,8 @@
 						<td class="fw-bold" th:text="${player.defensiveRebounding}">6</td>
 						<td class="fw-bold" th:text="${player.steal}">10</td>
 						<td class="fw-bold" th:text="${player.block}">6.5</td>
+
+						<td class="fw-bold" th:text="${player.overall}">99</td>
 					</tr>
 				</tbody>
 			</table>

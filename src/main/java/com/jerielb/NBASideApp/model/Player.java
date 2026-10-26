@@ -10,6 +10,7 @@ public class Player {
     // variables
     private long playerId;
     private String fullName;
+    private String positions;
     private String image;
     
     private String layup;
@@ -28,6 +29,7 @@ public class Player {
     private String steal;
     private String block;
     
+    private String overall;
     private boolean drafted;
     
     private List<Franchise> playedFor = new ArrayList<>();
@@ -48,16 +50,24 @@ public class Player {
         return fullName;
     }
     
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+    
+    public String getPositions() {
+        return positions;
+    }
+    
+    public void setPositions(String positions) {
+        this.positions = positions;
+    }
+    
     public void setImage(String image) {
         this.image = image;
     }
     
     public String getImage() {
         return image;
-    }
-    
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
     
     public String getLayup() {
@@ -154,6 +164,14 @@ public class Player {
     
     public void setBlock(String block) {
         this.block = block;
+    }
+    
+    public String getOverall() {
+        return overall;
+    }
+    
+    public void setOverall(String overall) {
+        this.overall = overall;
     }
     
     public boolean getDrafted() {

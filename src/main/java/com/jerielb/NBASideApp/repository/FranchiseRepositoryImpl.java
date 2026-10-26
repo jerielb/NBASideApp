@@ -80,7 +80,6 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 		for (int i = 0; i < franchiseIds.size(); i++) {
 			args[i] = franchiseIds.get(i);
 		}
-		System.out.println("DEBUG - " + franchiseIds + " -> " + Arrays.toString(args));
 		return jdbcTemplate.queryForList(query, Long.class, args);
 	}
 }

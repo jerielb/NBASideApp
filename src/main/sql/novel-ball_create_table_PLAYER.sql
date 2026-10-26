@@ -5,6 +5,7 @@ drop table PLAYER;
 create table PLAYER (
 	PLAYER_ID int primary key, 
     FULL_NAME varchar(100),
+    POSITIONS varchar(100),
     LAY varchar(3),
     DNK varchar(3),
     INS varchar(3),
@@ -16,5 +17,6 @@ create table PLAYER (
     ORE varchar(3),
     DRE varchar(3),
     STL varchar(3),
-    BLK varchar(3)
+    BLK varchar(3),
+    OVR varchar(4)
 );

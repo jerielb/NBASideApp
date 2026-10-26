@@ -18,6 +18,7 @@ public class PlayerRowMapper implements RowMapper<Player> {
 
         player.setPlayerId(playerId);
         player.setFullName(full_name);
+        player.setPositions(rs.getString("POSITIONS"));
         player.setImage(image);
         
         player.setLayup(rs.getString("LAY"));
@@ -35,6 +36,8 @@ public class PlayerRowMapper implements RowMapper<Player> {
         player.setDefensiveRebounding(rs.getString("DRE"));
         player.setSteal(rs.getString("STL"));
         player.setBlock(rs.getString("BLK"));
+        
+        player.setOverall(rs.getString("OVR"));
 
         player.setDrafted(false);
         return player;
