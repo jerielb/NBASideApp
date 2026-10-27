@@ -28,7 +28,6 @@ public class DraftPageController {
 		draftPageService.reset(league_size, roster_size, playedFor);
 		model.addAttribute("players", draftPageService.getDraftPool());
 		model.addAttribute("team", draftPageService.getTeam());
-//		model.addAttribute("teamIndex", draftPageService.getTeamIndex()+1);
 		
 		LOGGER.info("Redirecting to Draft page");
 		return "draft_page";

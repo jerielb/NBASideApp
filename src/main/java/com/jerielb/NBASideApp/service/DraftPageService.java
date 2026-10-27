@@ -131,7 +131,9 @@ public class DraftPageService {
 			}
 		}
 		
-		this.draftPool = playedForPool.get(franchises.get(teamIndex).getAcronym());
+		if (playedFor) {
+			this.draftPool = playedForPool.get(franchises.get(teamIndex).getAcronym());
+		}
 	}
 	
 	public void getCurrentTeams(int size) {
