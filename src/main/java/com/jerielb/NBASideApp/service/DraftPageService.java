@@ -26,6 +26,7 @@ public class DraftPageService {
 	private static List<Franchise> franchises = new ArrayList<>();
 	// used to track the current team selecting for within the league List 
 	private static int teamIndex;
+	private static boolean reverse;
 	
 	// repos
 	private final PlayerRepository playerRepository;
@@ -45,6 +46,7 @@ public class DraftPageService {
 		this.leagueSize = leagueSize;
 		this.rosterSize = rosterSize;
 		this.playedFor = playedFor;
+		reverse = false;
 		
 		league.clear();
 		if (playedFor) {
@@ -115,11 +117,20 @@ public class DraftPageService {
 	}
 	
 	public void nextTeam() {
-		if (teamIndex == league.size()-1) {
-			teamIndex = 0;
+		if (reverse) {
+			if (teamIndex == 0) {
+				reverse = false;
+			} else {
+				teamIndex--;
+			}
 		} else {
-			teamIndex++;
+			if (teamIndex == league.size()-1) {
+				reverse = true;
+			} else {
+				teamIndex++;
+			}
 		}
+		
 		this.draftPool = playedForPool.get(franchises.get(teamIndex).getAcronym());
 	}
 	

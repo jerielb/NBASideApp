@@ -10,7 +10,8 @@ public class Player {
     // variables
     private long playerId;
     private String fullName;
-    private String positions;
+    private String primaryPosition;
+    private String secondaryPosition;
     private String image;
     
     private String layup;
@@ -54,12 +55,20 @@ public class Player {
         this.fullName = fullName;
     }
     
-    public String getPositions() {
-        return positions;
+    public String getPrimaryPosition() {
+        return primaryPosition;
     }
     
-    public void setPositions(String positions) {
-        this.positions = positions;
+    public void setPrimaryPosition(String position) {
+        this.primaryPosition = position;
+    }
+    
+    public String getSecondaryPosition() {
+        return secondaryPosition;
+    }
+    
+    public void setSecondaryPosition(String position) {
+        this.secondaryPosition = position;
     }
     
     public void setImage(String image) {

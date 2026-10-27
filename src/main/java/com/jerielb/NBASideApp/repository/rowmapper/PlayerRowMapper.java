@@ -18,7 +18,8 @@ public class PlayerRowMapper implements RowMapper<Player> {
 
         player.setPlayerId(playerId);
         player.setFullName(full_name);
-        player.setPositions(rs.getString("POSITIONS"));
+        player.setPrimaryPosition(rs.getString("PRIMARY_POSITION"));
+        player.setSecondaryPosition(rs.getString("SECONDARY_POSITION"));
         player.setImage(image);
         
         player.setLayup(rs.getString("LAY"));

@@ -72,7 +72,10 @@
 							</form>
 						</td>
 						<td class="fw-bold" th:text="${player.fullName}">Michael Jordan</td>
-						<td class="fw-bold" th:text="${player.positions}">SG, SF</td>
+						<td class="fw-bold">
+							<span th:text="${player.primaryPosition}">SG</span><br>
+							<span th:text="${player.secondaryPosition}">SF</span>
+						</td>
 						
 						<td class="fw-bold" th:text="${player.layup}">10</td>
 						<td class="fw-bold" th:text="${player.dunk}">10</td>
