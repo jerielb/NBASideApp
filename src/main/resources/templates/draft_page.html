@@ -30,7 +30,9 @@
 				</div>
 				<div class="pe-0" th:each="player : ${team.roster}">
 					<div class="roster-row border">
-						<span th:text="${player.fullName}">name</span>
+						<span th:text="${player.fullName}">name</span>  
+						<span th:text="${player.primaryPosition}">SG</span>/
+						<span th:text="${player.secondaryPosition}">SF</span>
 <!--							<span th:text="${player.overall}">##</span>-->
 					</div>
 				</div>

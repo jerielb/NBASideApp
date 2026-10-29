@@ -33,7 +33,7 @@ public class Player {
     private String overall;
     private boolean drafted;
     
-    private List<Franchise> playedFor = new ArrayList<>();
+    private List<Franchise> franchises = new ArrayList<>();
     
     // constructor
     public Player() {}
@@ -192,11 +192,11 @@ public class Player {
     }
     
     
-    public List<Franchise> getPlayedFor() {
-        return playedFor;
+    public List<Franchise> getFranchises() {
+        return franchises;
     }
     
     public void addPlayedForFranchise(Franchise franchise) {
-        playedFor.add(franchise);
+        franchises.add(franchise);
     }
 }

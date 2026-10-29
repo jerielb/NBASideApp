@@ -14,7 +14,8 @@ public interface FranchiseRepository {
 	Franchise findById(long franchiseId);
 	Franchise getRandom(String league);
 	List<Franchise> findCurrent(int size);
-	List<Long> findPrevious(String franchiseAcronym);
+	List<Long> findHistoric(String franchiseAcronym);
 	List<Player> findPlayedFor(long franchiseId);
 	List<Long> findPlayedForIds(List<Long> franchiseIds);
+	List<Long> findDraftedByIds(List<Long> franchiseIds);
 }

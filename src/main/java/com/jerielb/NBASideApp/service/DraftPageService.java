@@ -20,6 +20,7 @@ public class DraftPageService {
 	private static int leagueSize;
 	private static int rosterSize;
 	private static boolean playedFor;
+	private static boolean draftedBy;
 	private static List<Team> league = new ArrayList<>();
 	private static List<Player> draftPool = new ArrayList<>();
 	private static Map<String,List<Player>> playedForPool = new HashMap<>();
@@ -40,12 +41,13 @@ public class DraftPageService {
 	}
 	
     // functions
-	public void reset(int leagueSize, int rosterSize, boolean playedFor) {
+	public void reset(int leagueSize, int rosterSize, boolean playedFor, boolean draftedBy) {
 		LOGGER.debug("Resetting draft page");
 		teamIndex = 0;
 		this.leagueSize = leagueSize;
 		this.rosterSize = rosterSize;
 		this.playedFor = playedFor;
+		this.draftedBy = draftedBy;
 		reverse = false;
 		
 		league.clear();
@@ -141,10 +143,14 @@ public class DraftPageService {
 		List<Player> allPlayers = getAllPlayers();
 		for (Franchise franchise : franchises) {
 			List<Player> players = new ArrayList<>();
-			List<Long> franchiseIds = franchiseRepository.findPrevious(franchise.getAcronym());
+			List<Long> franchiseIds = franchiseRepository.findHistoric(franchise.getAcronym());
 			franchiseIds.add(franchise.getFranchiseId());
 			
 			List<Long> playerIds = franchiseRepository.findPlayedForIds(franchiseIds);
+			if (draftedBy) {
+				List<Long> draftedPlayerIds = franchiseRepository.findDraftedByIds(franchiseIds);
+				playerIds.addAll(draftedPlayerIds);
+			}
 			for (Long playerId : playerIds) {
 				Player player = allPlayers.get(Math.toIntExact(playerId));
 				players.add(player);

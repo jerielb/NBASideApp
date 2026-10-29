@@ -21,11 +21,12 @@ public class DraftPageController {
 	}
 	
 	@PostMapping("/draft_page")
-	public String getNewDraftPage(@RequestParam int league_size, @RequestParam int roster_size, @RequestParam(required = false) boolean playedFor, Model model) {
+	public String getNewDraftPage(@RequestParam int league_size, @RequestParam int roster_size, 
+	                              @RequestParam(required = false) boolean playedFor, @RequestParam(required = false) boolean draftedBy, Model model) {
 		/* using @RequestParam to extract value from the [name=""] tag of the <select> tag inside the form from the html page */
 		
 		LOGGER.info("Reset draft page with League Size: " + league_size + " & Roster Size: " + roster_size);
-		draftPageService.reset(league_size, roster_size, playedFor);
+		draftPageService.reset(league_size, roster_size, playedFor, draftedBy);
 		model.addAttribute("players", draftPageService.getDraftPool());
 		model.addAttribute("team", draftPageService.getTeam());
 		

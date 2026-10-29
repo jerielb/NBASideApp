@@ -53,7 +53,7 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 	}
 	
 	@Override
-	public List<Long> findPrevious(String franchiseAcronym) {
+	public List<Long> findHistoric(String franchiseAcronym) {
 		String query = "select FRANCHISE_ID from FRANCHISE where ACTIVE = ?";
 		return jdbcTemplate.queryForList(query, Long.class, franchiseAcronym);
 	}
@@ -76,6 +76,22 @@ public class FranchiseRepositoryImpl implements FranchiseRepository {
 				"join PLAYED_FOR pf on p.PLAYER_ID = pf.PLAYER_ID " +
 				"join FRANCHISE f on pf.FRANCHISE_ID = f.FRANCHISE_ID " +
 				"where pf.FRANCHISE_ID in (" + placeholders + ") group by PLAYER_ID";
+		Object[] args = new Object[franchiseIds.size()];
+		for (int i = 0; i < franchiseIds.size(); i++) {
+			args[i] = franchiseIds.get(i);
+		}
+		return jdbcTemplate.queryForList(query, Long.class, args);
+	}
+	
+	@Override
+	public List<Long> findDraftedByIds(List<Long> franchiseIds) {
+		String placeholders = franchiseIds.stream()
+				.map(n -> "?")
+				.collect(Collectors.joining(", "));
+		String query = "select p.PLAYER_ID from PLAYER p " +
+				"join DRAFTED_BY db on p.PLAYER_ID = db.PLAYER_ID " +
+				"join FRANCHISE f on db.FRANCHISE_ID = f.FRANCHISE_ID " +
+				"where db.FRANCHISE_ID in (" + placeholders + ") group by PLAYER_ID";
 		Object[] args = new Object[franchiseIds.size()];
 		for (int i = 0; i < franchiseIds.size(); i++) {
 			args[i] = franchiseIds.get(i);
