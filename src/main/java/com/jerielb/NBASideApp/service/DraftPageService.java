@@ -83,6 +83,7 @@ public class DraftPageService {
 		team.addPlayer(player, playedFor);
 		if (playedFor) {
 			player.setDrafted(true);
+			draftPool = draftPool.subList(draftPool.indexOf(player), draftPool.size());
 		} else {
 			draftPool.remove(player);
 		}
@@ -134,6 +135,8 @@ public class DraftPageService {
 		}
 		
 		if (playedFor) {
+			// update Franchise's Pool
+			playedForPool.put(franchises.get(teamIndex).getAcronym(), draftPool);
 			this.draftPool = playedForPool.get(franchises.get(teamIndex).getAcronym());
 		}
 	}
