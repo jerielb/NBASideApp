@@ -120,6 +120,7 @@ public class DraftPageService {
 	}
 	
 	public void nextTeam() {
+		int currentIndex = teamIndex;
 		if (reverse) {
 			if (teamIndex == 0) {
 				reverse = false;
@@ -136,8 +137,9 @@ public class DraftPageService {
 		
 		if (playedFor) {
 			// update Franchise's Pool
-			playedForPool.put(franchises.get(teamIndex).getAcronym(), draftPool);
-			this.draftPool = playedForPool.get(franchises.get(teamIndex).getAcronym());
+			playedForPool.put(franchises.get(currentIndex).getAcronym(), draftPool);
+			// update draftPool
+			draftPool = playedForPool.get(franchises.get(teamIndex).getAcronym());
 		}
 	}
 	
