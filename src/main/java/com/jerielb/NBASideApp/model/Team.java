@@ -33,7 +33,7 @@ public class Team {
 		if (playedFor) {
 			historicRoster.remove(player);
 		} else if (roster.isEmpty()) {
-			setTeamName("Team " + player.getFullName());
+			setTeamName(String.valueOf(teamId));
 		}
 		roster.add(player);
 	}

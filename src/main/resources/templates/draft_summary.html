@@ -26,13 +26,16 @@
 			<div class="container border col-2">
 				<div id="team-roster" class="container row p-0" style="height:70%">
 					<div>
-						<h3>Lineup</h3>
-						<span th:text="${team.teamName}">##</span><br>
-						<b>PG</b> <span th:text="${team.insideScoring}">##</span><br>
-						<b>SG</b> <span th:text="${team.midRangeScoring}">##</span><br>
-						<b>SF</b> <span th:text="${team.threePointScoring}">##</span><br>
-						<b>PF</b> <span th:text="${team.playmaking}">##</span><br>
-						<b>C</b> <span th:text="${team.rebounding}">##</span><br>
+						<h3><span th:text="${team.teamName}">Team Name</span></h3>
+						<br>
+
+						<form method="post" action="#" th:action="@{/draft_summary/team}">
+							<div class="list-group list-group-flush">
+								<input class="list-group-item list-group-item-action list-group-item-dark page-link" type="submit" name="teamIndex" value="ACR" th:value="${franchise.teamName}"
+									   th:each="franchise : ${league}" >
+							</div>
+						</form>
+						
 					</div>
 				</div>
 			</div>
@@ -61,8 +64,8 @@
 								<th scope="col" style="width: 60px;">BLK</th>
 							</tr>
 						</thead>
-						<tbody th:each="player : ${team.roster}">
-						<tr>
+						<tbody>
+						<tr th:each="player : ${team.roster}">
 							<td class="p-0">
 								<img src="/static/images/players/0-Michael_Jordan.png" th:src="@{'/images/players/' + ${player.image} + '.png'}"
 									   alt="icon" height="72px">
@@ -87,20 +90,6 @@
 						</tr>
 						</tbody>
 					</table>
-				</div>
-				
-				<div class="border border-danger pt-2">
-					<nav>
-						<ul class="pagination d-flex justify-content-evenly overflow-auto">
-							<li  th:each="i : ${#numbers.sequence(1, leagueSize)}">
-								
-								<form method="post" action="#" th:action="@{/draft_summary/team}">
-									<input class="page-link" type="submit" value="#" 
-										   name="teamIndex" th:value="${i}">
-								</form>
-							</li>
-						</ul>
-					</nav>
 				</div>
 			</div>
 		</div>

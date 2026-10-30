@@ -54,17 +54,19 @@ public class DraftPageController {
 	@GetMapping("/draft_summary")
 	public String draftSummary(Model model) {
 		model.addAttribute("leagueSize", draftPageService.getLeagueSize());
+		model.addAttribute("league", draftPageService.getLeague());
 		model.addAttribute("team", draftPageService.getTeamAtIndex(0));
 		
 		return "draft_summary";
 	}
 	
 	@PostMapping("/draft_summary/team")
-	public String draftSummaryTeam(@RequestParam int teamIndex, Model model) {
+	public String draftSummaryTeam(@RequestParam String teamIndex, Model model) {
 		LOGGER.debug("Get team in league index: " + teamIndex);
 		
 		model.addAttribute("leagueSize", draftPageService.getLeagueSize());
-		model.addAttribute("team", draftPageService.getTeamAtIndex(teamIndex-1));
+		model.addAttribute("league", draftPageService.getLeague());
+		model.addAttribute("team", draftPageService.getTeamAtIndex(teamIndex));
 		
 		return "draft_summary";
 	}

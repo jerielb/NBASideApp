@@ -115,8 +115,20 @@ public class DraftPageService {
 		return league.get(teamIndex);
 	}
 	
+	public Team getTeamAtIndex(String teamIndex) {
+		if (!playedFor) {
+			return league.get(Integer.parseInt(teamIndex));
+		} else {
+			return league.stream().filter(team -> teamIndex.equals(team.getTeamName())).findFirst().orElse(null);
+		}
+	}
+	
 	public Team getTeam() {
 		return league.get(teamIndex);
+	}
+	
+	public List<Team> getLeague() {
+		return league;
 	}
 	
 	public void nextTeam() {
